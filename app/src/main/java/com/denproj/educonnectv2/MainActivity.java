@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.denproj.educonnectv2.databinding.ActivityMainBinding;
+import com.denproj.educonnectv2.ui.dashboard.Dashboard;
 import com.denproj.educonnectv2.viewModel.MainViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     MainViewModel viewModel;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

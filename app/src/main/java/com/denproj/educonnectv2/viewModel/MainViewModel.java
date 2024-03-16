@@ -2,6 +2,10 @@ package com.denproj.educonnectv2.viewModel;
 
 import androidx.lifecycle.ViewModel;
 
+import com.denproj.educonnectv2.room.dao.UserDao;
+import com.denproj.educonnectv2.room.entity.User;
+import com.denproj.educonnectv2.util.UITask;
+
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
@@ -11,11 +15,20 @@ public class MainViewModel extends ViewModel
 {
 
 
-
-    public String name = "Denver";
+    UserDao userDao;
 
     @Inject
-    public MainViewModel () {
+    public MainViewModel (UserDao userDao) {
+        this.userDao = userDao;
+    }
+
+    public <T> void login(UITask<T> uiTask) {
 
     }
+
+    public <T> void register(UITask<T> uiTask) {
+
+    }
+
+
 }

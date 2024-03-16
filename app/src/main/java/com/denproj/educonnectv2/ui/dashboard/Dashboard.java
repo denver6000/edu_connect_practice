@@ -1,4 +1,4 @@
-package com.denproj.educonnectv2;
+package com.denproj.educonnectv2.ui.dashboard;
 
 import android.os.Bundle;
 
@@ -19,14 +19,6 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-
-
-
-
-
-
-
 
     }
 }
