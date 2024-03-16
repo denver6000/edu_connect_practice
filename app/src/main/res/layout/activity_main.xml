@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="24dp"
-        android:src="@drawable/sti_logo"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout" />
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -24,23 +18,39 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="20dp"
+
         android:elevation="20dp"
         android:background="@drawable/corner_radius"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_gravity="center_horizontal"
+        >
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/open_sans"
-            android:gravity="center"
-            android:text="Login"
-            android:textColor="#3F51B5"
-            android:textSize="25sp" />
+            android:orientation="vertical"
+
+            >
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:id="@+id/logo"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/edu_try_logo"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans"
+                android:layout_gravity="center"
+                android:text="Login"
+                android:textColor="#3F51B5"
+                android:textSize="35sp" />
+
+
+        </LinearLayout>
+
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -75,6 +85,7 @@
             android:hint="Password"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:hintAnimationEnabled="true"
+            app:passwordToggleEnabled="true"
             app:hintTextColor="#7E7E7E"
             app:boxStrokeColor="#7E7E7E"
             android:layout_marginTop="10dp"
@@ -119,9 +130,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Register here"
+            android:text="Click here to Register"
             android:layout_gravity="center"
             android:layout_marginBottom="40dp"
+            android:id="@+id/registerBtn"
             android:textColor="#4CAF50"
             android:fontFamily="@font/open_sans"
             android:textStyle="bold"
@@ -129,4 +141,31 @@
 
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:elevation="20dp"
+        android:visibility="gone"
+        android:background="@drawable/corner_radius"
+        android:layout_gravity="center_horizontal"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/open_sans"
+            android:gravity="center"
+            android:text="Register"
+            android:textColor="#3F51B5"
+            android:textSize="25sp" />
+
+
+
+</LinearLayout>
+</LinearLayout>
