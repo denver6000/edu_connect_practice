@@ -20,8 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
-    Animation in_anim, out_anim;
-
+    Animation in_anim, out_anim, right_anim, left_anim, up_anim, down_anim;
 
     MainViewModel viewModel;
     
@@ -36,9 +35,13 @@ public class MainActivity extends AppCompatActivity {
 
         in_anim = AnimationUtils.loadAnimation(this, R.anim.scale_in_animation);
         out_anim = AnimationUtils.loadAnimation(this, R.anim.scale_out_animation);
+        right_anim = AnimationUtils.loadAnimation(this, R.anim.right_animation);
+        left_anim = AnimationUtils.loadAnimation(this, R.anim.left_animation);
+        up_anim = AnimationUtils.loadAnimation(this, R.anim.up_animation);
+        down_anim = AnimationUtils.loadAnimation(this, R.anim.down_animation);
 
 
-        binding.linearLayout.startAnimation(in_anim);
+        binding.linearLayout.startAnimation(left_anim);
 
         binding.loginBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -56,11 +59,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 binding.linearLayout.startAnimation(out_anim);
-                binding.linearLayout.setVisibility(View.GONE);
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        binding.linearLayout.setVisibility(View.GONE);
                         binding.linearLayout2.setVisibility(View.VISIBLE);
                         binding.linearLayout2.startAnimation(in_anim);
                     }
