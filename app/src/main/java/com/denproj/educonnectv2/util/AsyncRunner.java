@@ -12,8 +12,21 @@ public class AsyncRunner {
     public static Handler handler = new Handler(Looper.getMainLooper());
 
 
-    public static <T> void runAsync() {
+    public static <T> void runAsync(QueryTask<T> queryTask) {
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    T result = queryTask.onTask();
+                    queryTask.onSuccess(result);
 
+                    handler.post(() -> queryTask.onUI(result));
+
+                } catch (Exception e) {
+                    handler.post(() -> queryTask.onFail(e.getLocalizedMessage()));
+                }
+            }
+        });
     }
 
 }

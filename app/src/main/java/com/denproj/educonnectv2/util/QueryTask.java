@@ -6,4 +6,6 @@ public interface QueryTask<T> {
     void onSuccess(T result);
     void onFail(String message);
 
+    void onUI(T result);
+
 }
