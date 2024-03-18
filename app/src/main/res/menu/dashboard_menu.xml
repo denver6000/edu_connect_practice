@@ -2,9 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group >
-        <item android:title="Item" />
-        <item android:title="Item" />
-        <item android:title="Item" />
-        <item android:title="Item" />
+        <item
+            android:id="@+id/newsFragment"
+            android:title="News and Announcements" />
+        <item
+            android:id="@+id/calendaryFragment"
+            android:title="Event Calendar" />
+        <item
+            android:id="@+id/groupFragment"
+            android:title="Groups" />
+        <item
+            android:id="@+id/resourcesFragment"
+            android:title="Manage Resources" />
     </group>
 </menu>
