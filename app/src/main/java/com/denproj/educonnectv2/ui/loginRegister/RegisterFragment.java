@@ -30,23 +30,18 @@ public class RegisterFragment extends Fragment {
         viewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         NavController navController = Navigation.findNavController(requireActivity(), R.id.fragmentContainerView2);
         binding.setViewModel(viewModel);
-        binding.registerAction.setOnClickListener(new View.OnClickListener() {
+        binding.registerAction.setOnClickListener(view -> viewModel.register(new UITask<Void>() {
             @Override
-            public void onClick(View view) {
-                viewModel.register(new UITask<Void>() {
-                    @Override
-                    public void onSuccess(Void result) {
-                        Snackbar.make(binding.getRoot(), "Registered! Redirecting to Login", Snackbar.LENGTH_SHORT).show();
-                        navController.navigate(R.id.action_registerFragment_to_loginFragment);
-                    }
-
-                    @Override
-                    public void onFail(String message) {
-                        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
-                    }
-                });
+            public void onSuccess(Void result) {
+                Snackbar.make(binding.getRoot(), "Registered! Redirecting to Login", Snackbar.LENGTH_SHORT).show();
+                navController.navigate(R.id.action_registerFragment_to_loginFragment);
             }
-        });
+
+            @Override
+            public void onFail(String message) {
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+            }
+        }));
 
 
 

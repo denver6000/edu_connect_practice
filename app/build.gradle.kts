@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     id("com.google.dagger.hilt.android")
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -38,6 +39,8 @@ android {
 }
 
 dependencies {
+
+    implementation(libs.androidx.lifecycle.extensions)
 
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)

@@ -36,6 +36,9 @@ public class LoginFragment extends Fragment {
             @Override
             public void onSuccess(User result) {
                 Toast.makeText(requireContext(), "Welcome " + result.firstName, Toast.LENGTH_SHORT).show();
+                LoginFragmentDirections.ActionLoginFragmentToDashboard directions = LoginFragmentDirections.actionLoginFragmentToDashboard();
+                directions.setUserId(result.userId);
+                navController.navigate(directions);
             }
 
             @Override

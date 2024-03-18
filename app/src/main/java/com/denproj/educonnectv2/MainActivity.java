@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         down_anim = AnimationUtils.loadAnimation(this, R.anim.down_animation);
 
 
+        viewModel.attemptToRegisterRoles(this);
 
 
     }

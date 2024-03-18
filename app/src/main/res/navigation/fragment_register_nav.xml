@@ -28,5 +28,18 @@
             app:exitAnim="@anim/scale_out_animation"
             app:popEnterAnim="@anim/scale_in_animation"
             app:popExitAnim="@anim/scale_out_animation" />
+        <action
+            android:id="@+id/action_loginFragment_to_dashboard"
+            app:destination="@id/dashboard" />
     </fragment>
+    <activity
+        android:id="@+id/dashboard"
+        android:name="com.denproj.educonnectv2.ui.dashboard.Dashboard"
+        android:label="activity_dashboard"
+        tools:layout="@layout/activity_dashboard" >
+        <argument
+            android:name="userId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </activity>
 </navigation>

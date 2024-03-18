@@ -2,9 +2,10 @@ package com.denproj.educonnectv2.room.entity;
 
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(foreignKeys = @ForeignKey(entity = Schools.class, parentColumns = "schoolId", childColumns = "schoolId"))
 public class User {
 
     @PrimaryKey(autoGenerate = true)
@@ -14,6 +15,8 @@ public class User {
     public String middleName = "";
     public String email = "";
     public String password = "";
+
+    public int schoolId;
     public int roleId;
 
 

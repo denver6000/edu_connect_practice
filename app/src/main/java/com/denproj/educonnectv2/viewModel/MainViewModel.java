@@ -1,9 +1,14 @@
 package com.denproj.educonnectv2.viewModel;
 
+import android.content.Context;
+
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
 
 import com.denproj.educonnectv2.room.dao.UserDao;
+import com.denproj.educonnectv2.room.entity.Roles;
+import com.denproj.educonnectv2.room.entity.Schools;
+import com.denproj.educonnectv2.room.entity.SharedPrefUtil;
 import com.denproj.educonnectv2.room.entity.User;
 import com.denproj.educonnectv2.util.AsyncRunner;
 import com.denproj.educonnectv2.util.QueryTask;
@@ -24,6 +29,7 @@ public class MainViewModel extends ViewModel
     public ObservableField<String> confirmPassword = new ObservableField<>("");
 
 
+    public ObservableField<String> schoolName = new ObservableField<>("");
     public User userForRegister = new User();
 
     UserDao userDao;
@@ -62,6 +68,8 @@ public class MainViewModel extends ViewModel
         }
     }
 
+
+
     public void register(UITask<Void> uiTask) {
 
          if (userForRegister.firstName.isEmpty() ||
@@ -69,14 +77,16 @@ public class MainViewModel extends ViewModel
                  userForRegister.lastName.isEmpty() ||
                  userForRegister.email.isEmpty() ||
                  userForRegister.password.isEmpty() ||
-                 confirmPassword.get().isEmpty()) {
+                 confirmPassword.get().isEmpty() ||
+                 schoolName.get().isEmpty()) {
 
              uiTask.onFail("Empty Field");
          } else if (userForRegister.password.equals(confirmPassword.get())) {
              AsyncRunner.runAsync(new QueryTask<Void>() {
                  @Override
                  public Void onTask() {
-                     userForRegister.roleId = 1;
+                     userForRegister.roleId = userDao.getRoleIdFromRoleName(Roles.role_1);
+                     userForRegister.schoolId = registerSchoolAndGetSchoolId(schoolName.get());
                      return userDao.registerUser(userForRegister);
                  }
 
@@ -98,6 +108,16 @@ public class MainViewModel extends ViewModel
         } else {
              uiTask.onFail("Password Mismatch");
          }
+    }
+
+    public int registerSchoolAndGetSchoolId(String schoolName) {
+        userDao.registerSchool(new Schools(schoolName));
+
+        return userDao.selectSchoolIdByName(schoolName);
+    }
+
+    public void attemptToRegisterRoles(Context context) {
+        SharedPrefUtil.runCodeOnce(context, userDao);
     }
 
 

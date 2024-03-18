@@ -38,81 +38,104 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxStrokeColor="#7E7E7E"
-                app:hintAnimationEnabled="true"
-                app:hintTextColor="#7E7E7E"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:hint="First Name"
+                app:boxStrokeColor="#7E7E7E"
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="#7E7E7E"
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
                     android:fontFamily="@font/open_sans"
                     android:inputType="text"
                     android:maxLength="50"
                     android:maxLines="1"
-                    android:text="@={viewModel.userForRegister.firstName}"
 
-                    />
+                    android:text="@={viewModel.userForRegister.firstName}" />
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxStrokeColor="#7E7E7E"
-                app:hintAnimationEnabled="true"
-                app:hintTextColor="#7E7E7E"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:hint="Last Name"
+                app:boxStrokeColor="#7E7E7E"
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="#7E7E7E"
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
                     android:fontFamily="@font/open_sans"
                     android:inputType="text"
                     android:maxLength="50"
                     android:maxLines="1"
-                    android:text="@={viewModel.userForRegister.lastName}"
 
-                    />
+                    android:text="@={viewModel.userForRegister.lastName}" />
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxStrokeColor="#7E7E7E"
-                app:hintAnimationEnabled="true"
-                app:hintTextColor="#7E7E7E"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:hint="Middle Name"
+                app:boxStrokeColor="#7E7E7E"
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="#7E7E7E"
 
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
                     android:fontFamily="@font/open_sans"
                     android:inputType="text"
                     android:maxLength="50"
                     android:maxLines="1"
-                    android:text="@={viewModel.userForRegister.middleName}"
-                    />
+                    android:text="@={viewModel.userForRegister.middleName}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:hint="School Name"
+                app:boxStrokeColor="#7E7E7E"
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="#7E7E7E"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:fontFamily="@font/open_sans"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:text="@={viewModel.schoolName}" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -133,12 +156,12 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
                     android:fontFamily="@font/open_sans"
                     android:inputType="text"
                     android:maxLength="50"
                     android:maxLines="1"
-                    android:text="@={viewModel.userForRegister.email}"
-                    />
+                    android:text="@={viewModel.userForRegister.email}" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -160,12 +183,12 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
                     android:fontFamily="@font/open_sans"
                     android:inputType="textPassword"
                     android:maxLength="50"
                     android:maxLines="1"
-                    android:text="@={viewModel.userForRegister.password}"
-                    />
+                    android:text="@={viewModel.userForRegister.password}" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -186,13 +209,13 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
                     android:fontFamily="@font/open_sans"
                     android:inputType="textPassword"
                     android:maxLength="50"
                     android:maxLines="1"
-                    android:text="@={viewModel.confirmPassword}"
 
-                    />
+                    android:text="@={viewModel.confirmPassword}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton

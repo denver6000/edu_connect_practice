@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
 
-    <group >
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/newsFragment"
+            android:icon="@drawable/app_logo"
             android:title="News and Announcements" />
         <item
             android:id="@+id/calendaryFragment"
+
+            android:icon="@drawable/app_logo"
             android:title="Event Calendar" />
         <item
             android:id="@+id/groupFragment"
+
+            android:icon="@drawable/app_logo"
             android:title="Groups" />
         <item
             android:id="@+id/resourcesFragment"
+
+            android:icon="@drawable/app_logo"
             android:title="Manage Resources" />
     </group>
 </menu>
