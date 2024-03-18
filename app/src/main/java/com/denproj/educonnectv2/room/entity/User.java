@@ -9,11 +9,11 @@ public class User {
 
     @PrimaryKey(autoGenerate = true)
     public int userId;
-    public String firstName;
-    public String lastName;
-    public String middleName;
-    public String email;
-    public String password;
+    public String firstName = "";
+    public String lastName = "";
+    public String middleName = "";
+    public String email = "";
+    public String password = "";
     public int roleId;
 
 
