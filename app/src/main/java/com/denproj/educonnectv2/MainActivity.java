@@ -41,36 +41,6 @@ public class MainActivity extends AppCompatActivity {
         down_anim = AnimationUtils.loadAnimation(this, R.anim.down_animation);
 
 
-//        binding.linearLayout.startAnimation(left_anim);
-//
-//        binding.loginBtn.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent intent = new Intent(MainActivity.this, Dashboard.class);
-//                startActivity(intent);
-//
-//
-//            }
-//        });
-//
-//        binding.registerBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                binding.linearLayout.startAnimation(out_anim);
-//
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        binding.linearLayout.setVisibility(View.GONE);
-//                        binding.linearLayout2.setVisibility(View.VISIBLE);
-//                        binding.linearLayout2.startAnimation(in_anim);
-//                    }
-//                },1000);
-//
-//            }
-//        });
 
 
     }
