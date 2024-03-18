@@ -10,6 +10,7 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Toast;
 
 import com.denproj.educonnectv2.R;
@@ -30,6 +31,7 @@ public class LoginFragment extends Fragment {
         MainViewModel viewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         NavController navController = Navigation.findNavController(requireActivity(), R.id.fragmentContainerView2);
         binding.setViewModel(viewModel);
+
         binding.loginAction.setOnClickListener(view -> viewModel.login(new UITask<User>() {
             @Override
             public void onSuccess(User result) {
