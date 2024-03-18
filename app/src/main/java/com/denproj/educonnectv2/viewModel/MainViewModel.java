@@ -76,6 +76,7 @@ public class MainViewModel extends ViewModel
              AsyncRunner.runAsync(new QueryTask<Void>() {
                  @Override
                  public Void onTask() {
+                     userForRegister.roleId = 1;
                      return userDao.registerUser(userForRegister);
                  }
 
