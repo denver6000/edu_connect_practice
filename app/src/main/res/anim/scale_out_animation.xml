@@ -8,13 +8,13 @@
         android:toYScale="0"
         android:pivotX="50%"
         android:pivotY="50%"
-        android:duration="1000"
+        android:duration="500"
         />
 
     <alpha
         android:fromAlpha="1"
         android:toAlpha="0"
-        android:duration="1000"/>
+        android:duration="500"/>
 
 
 </set>
