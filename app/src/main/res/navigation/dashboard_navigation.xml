@@ -23,6 +23,6 @@
     <fragment
         android:id="@+id/resourcesFragment"
         android:name="com.denproj.educonnectv2.ui.dashboard.resources.ResourcesFragment"
-        android:label="Resources"
+        android:label="fragment_resources"
         tools:layout="@layout/fragment_resources" />
 </navigation>
