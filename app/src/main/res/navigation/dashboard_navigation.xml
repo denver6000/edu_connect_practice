@@ -8,21 +8,21 @@
     <fragment
         android:id="@+id/calendaryFragment"
         android:name="com.denproj.educonnectv2.ui.dashboard.calendar.CalendaryFragment"
-        android:label="fragment_calendary"
+        android:label="Calendar"
         tools:layout="@layout/fragment_calendary" />
     <fragment
         android:id="@+id/groupFragment"
         android:name="com.denproj.educonnectv2.ui.dashboard.group.GroupFragment"
-        android:label="fragment_group"
+        android:label="Groups"
         tools:layout="@layout/fragment_group" />
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.denproj.educonnectv2.ui.dashboard.news.NewsFragment"
-        android:label="fragment_news"
+        android:label="News"
         tools:layout="@layout/fragment_news" />
     <fragment
         android:id="@+id/resourcesFragment"
         android:name="com.denproj.educonnectv2.ui.dashboard.resources.ResourcesFragment"
-        android:label="fragment_resources"
+        android:label="Resources"
         tools:layout="@layout/fragment_resources" />
 </navigation>
