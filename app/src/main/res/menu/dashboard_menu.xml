@@ -6,22 +6,21 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/newsFragment"
-            android:icon="@drawable/app_logo"
+            android:icon="@drawable/baseline_newspaper_24"
             android:title="News and Announcements" />
         <item
             android:id="@+id/calendaryFragment"
 
-            android:icon="@drawable/app_logo"
+            android:icon="@drawable/baseline_event_note_24"
             android:title="Event Calendar" />
         <item
             android:id="@+id/groupFragment"
 
-            android:icon="@drawable/app_logo"
+            android:icon="@drawable/baseline_groups_24"
             android:title="Groups" />
         <item
             android:id="@+id/resourcesFragment"
-
-            android:icon="@drawable/app_logo"
+            android:icon="@drawable/baseline_storage_24"
             android:title="Manage Resources" />
     </group>
 </menu>
