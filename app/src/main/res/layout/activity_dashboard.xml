@@ -3,12 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
-    android:background="#3282F6"
+    android:background="@drawable/try_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.Dashboard"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    android:fitsSystemWindows="true">
+    <!-- tools:openDrawer="start" -->
+
+
+
 
 
     <LinearLayout
@@ -21,6 +24,8 @@
             android:layout_height="?attr/actionBarSize">
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
+                android:background="@drawable/bg_gradient"
+                app:titleTextColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:title="Dashboard" />
@@ -33,7 +38,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="true"
-
             app:navGraph="@navigation/dashboard_navigation" />
     </LinearLayout>
 

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import com.denproj.educonnectv2.R;
@@ -21,6 +22,8 @@ import com.denproj.educonnectv2.viewModel.MainViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
 public class LoginFragment extends Fragment {
+    Animation in_anim, out_anim;
+
 
 
 
@@ -32,6 +35,12 @@ public class LoginFragment extends Fragment {
         NavController navController = Navigation.findNavController(requireActivity(), R.id.fragmentContainerView2);
         binding.setViewModel(viewModel);
 
+        in_anim = AnimationUtils.loadAnimation(getContext(), R.anim.scale_in_animation);
+        out_anim = AnimationUtils.loadAnimation(getContext(), R.anim.scale_out_animation);
+
+        binding.linearLayout.startAnimation(in_anim);
+
+
         binding.loginAction.setOnClickListener(view -> viewModel.login(new UITask<User>() {
             @Override
             public void onSuccess(User result) {
@@ -40,6 +49,8 @@ public class LoginFragment extends Fragment {
                 directions.setUserId(result.userId);
                 navController.navigate(directions);
             }
+
+
 
             @Override
             public void onFail(String message) {

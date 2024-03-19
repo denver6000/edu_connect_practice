@@ -16,14 +16,14 @@
         app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/idol_image"/>
+        android:src="@drawable/caloocan_boy"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/open_sans"
-        android:text="Double Chin Coding Master"
+        android:text="Denver Ballesteros"
         android:id="@+id/name"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/open_sans"
-        android:text="CodingMaster.com"
+        android:text="DenverBallesteros@gmail.com"
         android:textSize="12sp"
 
         android:textColor="@color/white"
