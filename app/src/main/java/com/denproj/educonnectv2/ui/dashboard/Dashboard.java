@@ -9,7 +9,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavArgs;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
@@ -18,6 +20,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.denproj.educonnectv2.R;
 import com.denproj.educonnectv2.databinding.ActivityDashboardBinding;
+import com.denproj.educonnectv2.databinding.SidebarHeaderDashboardBinding;
 import com.denproj.educonnectv2.room.entity.User;
 import com.denproj.educonnectv2.util.UITask;
 import com.denproj.educonnectv2.viewModel.DashboardViewModel;
@@ -49,20 +52,34 @@ public class Dashboard extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-//        int userId = DashboardArgs.fromBundle(savedInstanceState).getUserId();
-//        if (userId != 0) {
-//            viewModel.getUser(userId, new UITask<User>() {
-//                @Override
-//                public void onSuccess(User result) {
-//                    Toast.makeText(Dashboard.this, "Welcome ", Toast.LENGTH_SHORT).show();
-//                }
-//
-//                @Override
-//                public void onFail(String message) {
-//
-//                }
-//            });
-//        }
+         ;
+        int userId = getIntent().getIntExtra("userId", 0);
+
+        if (userId != 0) {
+            viewModel.getUser(userId, new UITask<User>() {
+                @Override
+                public void onSuccess(User result) {
+                    SidebarHeaderDashboardBinding headerBinding = SidebarHeaderDashboardBinding.bind(binding.dashboardNavigationView.getHeaderView(0));
+                    String name = result.firstName + " " + result.lastName;
+                    headerBinding.name.setText(name);
+                }
+
+                @Override
+                public void onFail(String message) {
+
+                }
+            });
+        } else {
+            Toast.makeText(this, "No User", Toast.LENGTH_SHORT).show();
+        }
+
+        viewModel.roleName.observe(this, s -> {
+            Toast.makeText(this, "Your role is " + s, Toast.LENGTH_SHORT).show();
+        });
+
+        viewModel.schoolName.observe(this, s -> {
+            Toast.makeText(this, "Your school is " + s, Toast.LENGTH_SHORT).show();
+        });
 
     }
 

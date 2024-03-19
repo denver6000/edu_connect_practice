@@ -33,6 +33,12 @@ public interface UserDao {
     @Query("SELECT roleId FROM Roles WHERE roleName = :roleName LIMIT 1")
     int getRoleIdFromRoleName(String roleName);
 
+    @Query("SELECT roleName FROM Roles WHERE roleId=:roleId")
+    String getRoleNameById(int roleId);
+
+    @Query("SELECT schoolName FROM Schools WHERE schoolId = :schoolId")
+    String getSchoolNameById(int schoolId);
+
 
 
 }

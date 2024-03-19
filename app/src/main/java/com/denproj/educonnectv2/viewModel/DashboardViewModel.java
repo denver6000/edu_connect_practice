@@ -18,6 +18,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 public class DashboardViewModel extends ViewModel {
 
     public MutableLiveData<User> loggedInUser = new MutableLiveData<>(null);
+    public MutableLiveData<String> schoolName = new MutableLiveData<>("");
+
+    public MutableLiveData<String> roleName = new MutableLiveData<>("");
+
     UserDao userDao;
     @Inject
     public DashboardViewModel (UserDao userDao) {
@@ -37,7 +41,11 @@ public class DashboardViewModel extends ViewModel {
 
             @Override
             public void onSuccess(User result) {
-                loggedInUser.postValue(result);
+                if (result != null) {
+                    loggedInUser.postValue(result);
+                    loadUserSchool(result);
+                    loadRoleName(result);
+                }
             }
 
             @Override
@@ -52,7 +60,53 @@ public class DashboardViewModel extends ViewModel {
         });
     }
 
+    void loadUserSchool (User user) {
+        AsyncRunner.runAsync(new QueryTask<String>() {
+            @Override
+            public String onTask() {
+                return userDao.getSchoolNameById(user.schoolId);
+            }
 
+            @Override
+            public void onSuccess(String result) {
+                schoolName.postValue(result);
+            }
+
+            @Override
+            public void onFail(String message) {
+
+            }
+
+            @Override
+            public void onUI(String result) {
+
+            }
+        });
+    }
+
+    void loadRoleName (User user) {
+        AsyncRunner.runAsync(new QueryTask<String>() {
+            @Override
+            public String onTask() {
+                return userDao.getRoleNameById(user.roleId);
+            }
+
+            @Override
+            public void onSuccess(String result) {
+                roleName.postValue(result);
+            }
+
+            @Override
+            public void onFail(String message) {
+
+            }
+
+            @Override
+            public void onUI(String result) {
+
+            }
+        });
+    }
 
 
 }
