@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.denproj.educonnectv2.room.entity.News;
 import com.denproj.educonnectv2.room.entity.Roles;
 import com.denproj.educonnectv2.room.entity.Schools;
 import com.denproj.educonnectv2.room.entity.User;
@@ -38,6 +39,9 @@ public interface UserDao {
 
     @Query("SELECT schoolName FROM Schools WHERE schoolId = :schoolId")
     String getSchoolNameById(int schoolId);
+
+    @Insert
+    Void addNews(News news);
 
 
 

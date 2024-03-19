@@ -19,10 +19,23 @@
         android:id="@+id/newsFragment"
         android:name="com.denproj.educonnectv2.ui.dashboard.news.NewsFragment"
         android:label="News"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_newsFragment_to_addNewsFragment"
+            app:destination="@id/addNewsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/resourcesFragment"
         android:name="com.denproj.educonnectv2.ui.dashboard.resources.ResourcesFragment"
         android:label="fragment_resources"
         tools:layout="@layout/fragment_resources" />
+    <fragment
+        android:id="@+id/addNewsFragment"
+        android:name="com.denproj.educonnectv2.ui.dashboard.news.AddNewsFragment"
+        android:label="fragment_add_news"
+        tools:layout="@layout/fragment_add_news" >
+        <action
+            android:id="@+id/action_addNewsFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+    </fragment>
 </navigation>

@@ -24,6 +24,7 @@ import com.denproj.educonnectv2.databinding.SidebarHeaderDashboardBinding;
 import com.denproj.educonnectv2.room.entity.User;
 import com.denproj.educonnectv2.util.UITask;
 import com.denproj.educonnectv2.viewModel.DashboardViewModel;
+import com.denproj.educonnectv2.viewModel.NewsViewModel;
 import com.google.android.material.navigation.NavigationView;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -62,6 +63,7 @@ public class Dashboard extends AppCompatActivity {
                     SidebarHeaderDashboardBinding headerBinding = SidebarHeaderDashboardBinding.bind(binding.dashboardNavigationView.getHeaderView(0));
                     String name = result.firstName + " " + result.lastName;
                     headerBinding.name.setText(name);
+                    headerBinding.email.setText(result.email);
                 }
 
                 @Override
@@ -73,13 +75,7 @@ public class Dashboard extends AppCompatActivity {
             Toast.makeText(this, "No User", Toast.LENGTH_SHORT).show();
         }
 
-        viewModel.roleName.observe(this, s -> {
-            Toast.makeText(this, "Your role is " + s, Toast.LENGTH_SHORT).show();
-        });
 
-        viewModel.schoolName.observe(this, s -> {
-            Toast.makeText(this, "Your school is " + s, Toast.LENGTH_SHORT).show();
-        });
 
     }
 
