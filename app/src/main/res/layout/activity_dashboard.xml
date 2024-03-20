@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
-    android:background="@drawable/try_bg"
+    android:background="#2196F3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.Dashboard"
-    android:fitsSystemWindows="true">
-    <!-- tools:openDrawer="start" -->
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    >
+    <!--  -->
 
 
 
@@ -24,7 +26,7 @@
             android:layout_height="?attr/actionBarSize">
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:background="@drawable/bg_gradient"
+                android:background="#3F51B5"
                 app:titleTextColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

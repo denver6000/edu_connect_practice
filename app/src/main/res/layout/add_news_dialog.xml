@@ -10,12 +10,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="5dp"
+
+        >
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_margin="5dp"
             android:padding="5dp"
             app:srcCompat="@drawable/baseline_add_a_photo_24" />
@@ -30,7 +33,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint"
+                android:maxLines="1"
+                android:fontFamily="@font/open_sans"
+                android:maxLength="20"
                 android:text="@={news.newsTitle}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -44,10 +49,11 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint"
+                android:gravity="start"
+                android:fontFamily="@font/open_sans"
                 android:lines="10"
                 android:maxLines="20"
-                android:text="@={news.newsDescription}"/>
+                android:text="@={news.newsDescription}" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>

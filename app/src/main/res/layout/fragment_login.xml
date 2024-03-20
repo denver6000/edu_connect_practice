@@ -53,7 +53,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/open_sans"
+                        android:fontFamily="@font/roboto_condensed_bold"
                         android:text="Login"
                         android:textColor="#3F51B5"
                         android:textSize="35sp" />
@@ -83,6 +83,8 @@
                         android:inputType="text"
                         android:maxLength="50"
                         android:maxLines="1"
+                        android:drawableStart="@drawable/baseline_account_box_24"
+                        android:drawablePadding="10dp"
                         android:text="@={viewModel.emailForLogin}"
 
                         />
@@ -110,6 +112,8 @@
                         android:inputType="textPassword"
                         android:maxLength="50"
                         android:maxLines="1"
+                        android:drawableStart="@drawable/baseline_lock_24"
+                        android:drawablePadding="10dp"
                         android:text="@={viewModel.passwordForLogin}"
                         />
                 </com.google.android.material.textfield.TextInputLayout>

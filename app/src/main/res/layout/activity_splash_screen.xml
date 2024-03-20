@@ -1,28 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashScreen"
-    android:gravity="center"
+    android:background="#03A9F4"
     android:orientation="vertical"
-    android:background="@drawable/try_bg"
+    tools:context=".SplashScreen"
 
     >
 
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:src="@drawable/edu_try_logo"
-        android:elevation="20dp"
-        android:id="@+id/logo"
+    <LinearLayout
+        android:id="@+id/topViews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+
+        >
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:background="@color/white"
 
 
-        />
+            />
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:background="@color/white"
+
+            />
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="110dp"
+            android:layout_marginStart="10dp"
+            android:background="@color/white"
+
+            />
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="10dp"
+            android:background="@color/white"
+
+            />
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="10dp"
+            android:background="@color/white"
+
+            />
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:background="@color/white"
+            android:layout_marginEnd="10dp"
+
+            />
+
+    </LinearLayout>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+
+        >
+
+        <LinearLayout
+            android:id="@+id/leftTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+
+            >
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:fontFamily="@font/alfa_slab_one"
+                android:text="Edu"
+                android:textColor="@color/white"
+                android:textSize="60sp" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="220dp"
+                android:layout_height="10dp"
+                android:background="@color/white" />
 
 
-</LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rightTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/alfa_slab_one"
+                android:text="Connect"
+                android:textColor="@color/white"
+                android:textSize="60sp" />
+
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="220dp"
+                android:layout_height="10dp"
+                android:layout_gravity="end"
+                android:background="@color/white" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/bottomViews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome!"
+            android:layout_marginBottom="30dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/alfa_slab_one"
+            android:textSize="20sp"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>
