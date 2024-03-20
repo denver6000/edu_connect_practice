@@ -83,6 +83,8 @@
                         android:inputType="text"
                         android:maxLength="50"
                         android:maxLines="1"
+                        android:drawableStart="@drawable/baseline_account_box_24"
+                        android:drawablePadding="10dp"
                         android:text="@={viewModel.emailForLogin}"
 
                         />
@@ -110,6 +112,8 @@
                         android:inputType="textPassword"
                         android:maxLength="50"
                         android:maxLines="1"
+                        android:drawableStart="@drawable/baseline_lock_24"
+                        android:drawablePadding="10dp"
                         android:text="@={viewModel.passwordForLogin}"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
