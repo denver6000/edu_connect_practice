@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.denproj.educonnectv2.R;
 import com.denproj.educonnectv2.databinding.FragmentLoginBinding;
+import com.denproj.educonnectv2.room.entity.SavedLogin;
 import com.denproj.educonnectv2.room.entity.User;
 import com.denproj.educonnectv2.util.UITask;
 import com.denproj.educonnectv2.viewModel.MainViewModel;
@@ -38,28 +39,39 @@ public class LoginFragment extends Fragment {
         in_anim = AnimationUtils.loadAnimation(getContext(), R.anim.scale_in_animation);
         out_anim = AnimationUtils.loadAnimation(getContext(), R.anim.scale_out_animation);
 
-        binding.linearLayout.startAnimation(in_anim);
 
+        binding.registerBtn.setOnClickListener(view -> {
+            navController.navigate(R.id.action_loginFragment_to_registerFragment);
+        });
 
-        binding.loginAction.setOnClickListener(view -> viewModel.login(new UITask<User>() {
+        viewModel.checkAndLoadSaveLogin(new UITask<SavedLogin>() {
             @Override
-            public void onSuccess(User result) {
-                Toast.makeText(requireContext(), "Welcome " + result.firstName, Toast.LENGTH_SHORT).show();
+            public void onSuccess(SavedLogin result) {
                 LoginFragmentDirections.ActionLoginFragmentToDashboard directions = LoginFragmentDirections.actionLoginFragmentToDashboard();
                 directions.setUserId(result.userId);
                 navController.navigate(directions);
             }
 
-
-
             @Override
             public void onFail(String message) {
-                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
-            }
-        }));
+                binding.linearLayout.startAnimation(in_anim);
+                binding.loginAction.setOnClickListener(view -> viewModel.login(new UITask<User>() {
+                    @Override
+                    public void onSuccess(User result) {
+                        Toast.makeText(requireContext(), "Welcome " + result.firstName, Toast.LENGTH_SHORT).show();
+                        LoginFragmentDirections.ActionLoginFragmentToDashboard directions = LoginFragmentDirections.actionLoginFragmentToDashboard();
+                        directions.setUserId(result.userId);
+                        navController.navigate(directions);
+                    }
 
-        binding.registerBtn.setOnClickListener(view -> {
-            navController.navigate(R.id.action_loginFragment_to_registerFragment);
+
+
+                    @Override
+                    public void onFail(String message) {
+                        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+                    }
+                }));
+            }
         });
         return binding.getRoot();
     }

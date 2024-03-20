@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.denproj.educonnectv2.room.dao.UserDao;
 import com.denproj.educonnectv2.room.entity.Roles;
+import com.denproj.educonnectv2.room.entity.SavedLogin;
 import com.denproj.educonnectv2.room.entity.Schools;
 import com.denproj.educonnectv2.room.entity.SharedPrefUtil;
 import com.denproj.educonnectv2.room.entity.User;
@@ -51,7 +52,7 @@ public class MainViewModel extends ViewModel {
 
                 @Override
                 public void onSuccess(User result) {
-
+                    userDao.saveLogin(new SavedLogin(result.userId));
                 }
 
                 @Override
@@ -110,6 +111,34 @@ public class MainViewModel extends ViewModel {
         } else {
             uiTask.onFail("Password Mismatch");
         }
+    }
+
+    public void checkAndLoadSaveLogin(UITask<SavedLogin> uiTask) {
+        AsyncRunner.runAsync(new QueryTask<SavedLogin>() {
+            @Override
+            public SavedLogin onTask() {
+                return userDao.getRecentlySavedLogin();
+            }
+
+            @Override
+            public void onSuccess(SavedLogin result) {
+
+            }
+
+            @Override
+            public void onFail(String message) {
+                uiTask.onFail(message);
+            }
+
+            @Override
+            public void onUI(SavedLogin result) {
+                if (result == null) {
+                    uiTask.onFail("No Saved Login");
+                } else {
+                    uiTask.onSuccess(result);
+                }
+            }
+        });
     }
 
     public int registerSchoolAndGetSchoolId(String schoolName) {

@@ -7,6 +7,7 @@ import androidx.room.Query;
 
 import com.denproj.educonnectv2.room.entity.News;
 import com.denproj.educonnectv2.room.entity.Roles;
+import com.denproj.educonnectv2.room.entity.SavedLogin;
 import com.denproj.educonnectv2.room.entity.Schools;
 import com.denproj.educonnectv2.room.entity.User;
 
@@ -43,6 +44,13 @@ public interface UserDao {
     @Insert
     Void addNews(News news);
 
+
+    @Insert
+    Void saveLogin(SavedLogin savedLogin);
+
+
+    @Query("SElECT * FROM Savedlogin LIMIT 1")
+    SavedLogin getRecentlySavedLogin();
 
 
 }
