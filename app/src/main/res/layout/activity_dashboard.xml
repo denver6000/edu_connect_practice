@@ -7,8 +7,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.Dashboard"
-    android:fitsSystemWindows="true">
-    <!-- tools:openDrawer="start" -->
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    >
+    <!--  -->
 
 
 
