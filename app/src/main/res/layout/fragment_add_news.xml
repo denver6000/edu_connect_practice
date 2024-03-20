@@ -11,46 +11,90 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/try_bg"
+        android:gravity="center"
+        >
 
-        <ImageView
-            android:id="@+id/imageView2"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="50dp"
-            android:src="@drawable/baseline_add_a_photo_24" />
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/linearLayout"
+            >
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:hint="News Title"
-                android:text="@={viewModel.news.newsTitle}"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:text="ADD NEWS ICON"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:fontFamily="@font/open_sans"
+                />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/baseline_add_a_photo_24" />
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
+                android:background="@color/white"
+                android:textColorHint="#939393"
+                app:boxStrokeColor="#939393"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="News Title"
+                    android:maxLines="1"
+                    android:maxLength="20"
+                    android:fontFamily="@font/open_sans"
+                    android:text="@={viewModel.news.newsTitle}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:hint="News Descriptin"
-                android:lines="10"
-                android:text="@={viewModel.news.newsDescription}"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_margin="10dp"
+                android:textColorHint="#939393"
+                android:background="@color/white"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:boxStrokeColor="#939393"
+                >
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:text="Add News" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans"
+                    android:gravity="start"
+                    android:textColor="@color/black"
+                    android:hint="News Description"
+                    android:lines="10"
+                    android:padding="10dp"
+                    android:text="@={viewModel.news.newsDescription}" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_design2"
+                android:textColor="@color/white"
+                android:layout_margin="10dp"
+                android:text="Add News" />
+
+        </LinearLayout>
+
+
+
+        </LinearLayout>
+
 </layout>

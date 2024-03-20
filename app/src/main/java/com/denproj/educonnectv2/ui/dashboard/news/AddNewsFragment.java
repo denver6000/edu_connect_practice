@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.denproj.educonnectv2.R;
 import com.denproj.educonnectv2.databinding.FragmentAddNewsBinding;
@@ -21,6 +23,7 @@ public class AddNewsFragment extends Fragment {
 
     ActivityResultLauncher<String> launcher;
 
+    Animation in_anim, out_anim;
 
 
     @Override
@@ -29,6 +32,13 @@ public class AddNewsFragment extends Fragment {
         FragmentAddNewsBinding binding = FragmentAddNewsBinding.inflate(inflater);
         NewsViewModel viewModel = new ViewModelProvider(requireActivity()).get(NewsViewModel.class);
         binding.setViewModel(viewModel);
+
+        in_anim = AnimationUtils.loadAnimation(getContext(), R.anim.scale_in_animation);
+        out_anim = AnimationUtils.loadAnimation(getContext(), R.anim.scale_out_animation);
+
+        binding.linearLayout.startAnimation(in_anim);
+
+
 
         launcher = registerForActivityResult(new ActivityResultContracts.GetContent(), result -> {
             if (result != null) {
