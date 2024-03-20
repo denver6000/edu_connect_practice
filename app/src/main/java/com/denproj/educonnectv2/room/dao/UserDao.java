@@ -11,6 +11,8 @@ import com.denproj.educonnectv2.room.entity.SavedLogin;
 import com.denproj.educonnectv2.room.entity.Schools;
 import com.denproj.educonnectv2.room.entity.User;
 
+import java.util.List;
+
 @Dao
 public interface UserDao {
 
@@ -43,6 +45,9 @@ public interface UserDao {
 
     @Insert
     Void addNews(News news);
+
+    @Query("SELECT * FROM News WHERE schoolScope = :schoolId")
+    List<News> getAllNews(int schoolId);
 
 
     @Insert

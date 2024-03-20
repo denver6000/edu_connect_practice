@@ -11,5 +11,5 @@ public class News {
     public String newsTitle = "";
     public String newsDescription = "";
     public int schoolScope = 0;
-    public String path = "";
+    public byte[] imageByteArray = null;
 }

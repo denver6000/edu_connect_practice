@@ -1,5 +1,7 @@
 package com.denproj.educonnectv2.ui.dashboard.news;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +30,11 @@ public class NewsRecyclerViewAdapter extends RecyclerView.Adapter<NewsRecyclerVi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        News news = newsList.get(position);
+        holder.binding.newsTitle.setText(news.newsTitle);
+        holder.binding.newsDescription.setText(news.newsDescription);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(news.imageByteArray, 0, news.imageByteArray.length);
+        holder.binding.newsPoster.setImageBitmap(bitmap);
     }
 
     @Override
