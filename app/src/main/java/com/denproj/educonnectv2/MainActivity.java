@@ -1,19 +1,34 @@
 package com.denproj.educonnectv2;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.denproj.educonnectv2.databinding.ActivityMainBinding;
 import com.denproj.educonnectv2.ui.dashboard.Dashboard;
 import com.denproj.educonnectv2.viewModel.MainViewModel;
+
+import java.security.Permission;
+import java.security.Permissions;
+import java.util.Map;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -23,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
     Animation in_anim, out_anim, right_anim, left_anim, up_anim, down_anim;
 
     MainViewModel viewModel;
+
+
+    ActivityResultLauncher<String> requestPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback<Boolean>() {
+        @Override
+        public void onActivityResult(Boolean o) {
+            if (o) {
+                Toast.makeText(MainActivity.this, "You may not be able to upload pictures.", Toast.LENGTH_SHORT).show();
+            }
+        }
+    });
     
 
     @Override
@@ -42,6 +67,22 @@ public class MainActivity extends AppCompatActivity {
 
 
         viewModel.attemptToRegisterRoles(this);
+
+        if (checkSelfPermission(Manifest.permission.MANAGE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.MANAGE_EXTERNAL_STORAGE)) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Permission Alert")
+                    .setMessage("Please allow permissions to get full experience")
+                    .setPositiveButton("Yes", (dialogInterface, i) -> {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                            requestPermissionLauncher.launch(Manifest.permission.MANAGE_EXTERNAL_STORAGE);
+                        }
+                    })
+                    .setNegativeButton("No", (dialogInterface, i) -> {
+                        Toast.makeText(this, "You will not be able to upload images and files.", Toast.LENGTH_SHORT).show();
+                    })
+                    .show();
+        }
+
 
 
     }
