@@ -19,8 +19,7 @@ import javax.inject.Inject;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
 @HiltViewModel
-public class MainViewModel extends ViewModel
-{
+public class MainViewModel extends ViewModel {
 
     public ObservableField<String> emailForLogin = new ObservableField<>("");
 
@@ -35,7 +34,7 @@ public class MainViewModel extends ViewModel
     UserDao userDao;
 
     @Inject
-    public MainViewModel (UserDao userDao) {
+    public MainViewModel(UserDao userDao) {
         this.userDao = userDao;
     }
 
@@ -62,52 +61,55 @@ public class MainViewModel extends ViewModel
 
                 @Override
                 public void onUI(User result) {
-                    uiTask.onSuccess(result);
+                    if (result == null) {
+                        uiTask.onFail("Incorrect email or password");
+                    } else {
+                        uiTask.onSuccess(result);
+                    }
                 }
             });
         }
     }
 
 
-
     public void register(UITask<Void> uiTask) {
 
-         if (userForRegister.firstName.isEmpty() ||
-                 userForRegister.middleName.isEmpty() ||
-                 userForRegister.lastName.isEmpty() ||
-                 userForRegister.email.isEmpty() ||
-                 userForRegister.password.isEmpty() ||
-                 confirmPassword.get().isEmpty() ||
-                 schoolName.get().isEmpty()) {
+        if (userForRegister.firstName.isEmpty() ||
+                userForRegister.middleName.isEmpty() ||
+                userForRegister.lastName.isEmpty() ||
+                userForRegister.email.isEmpty() ||
+                userForRegister.password.isEmpty() ||
+                confirmPassword.get().isEmpty() ||
+                schoolName.get().isEmpty()) {
 
-             uiTask.onFail("Empty Field");
-         } else if (userForRegister.password.equals(confirmPassword.get())) {
-             AsyncRunner.runAsync(new QueryTask<Void>() {
-                 @Override
-                 public Void onTask() {
-                     userForRegister.roleId = userDao.getRoleIdFromRoleName(Roles.role_1);
-                     userForRegister.schoolId = registerSchoolAndGetSchoolId(schoolName.get());
-                     return userDao.registerUser(userForRegister);
-                 }
+            uiTask.onFail("Empty Field");
+        } else if (userForRegister.password.equals(confirmPassword.get())) {
+            AsyncRunner.runAsync(new QueryTask<Void>() {
+                @Override
+                public Void onTask() {
+                    userForRegister.roleId = userDao.getRoleIdFromRoleName(Roles.role_1);
+                    userForRegister.schoolId = registerSchoolAndGetSchoolId(schoolName.get());
+                    return userDao.registerUser(userForRegister);
+                }
 
-                 @Override
-                 public void onSuccess(Void result) {
+                @Override
+                public void onSuccess(Void result) {
 
-                 }
+                }
 
-                 @Override
-                 public void onFail(String message) {
+                @Override
+                public void onFail(String message) {
                     uiTask.onFail(message);
-                 }
+                }
 
-                 @Override
-                 public void onUI(Void result) {
+                @Override
+                public void onUI(Void result) {
                     uiTask.onSuccess(result);
-                 }
-             });
+                }
+            });
         } else {
-             uiTask.onFail("Password Mismatch");
-         }
+            uiTask.onFail("Password Mismatch");
+        }
     }
 
     public int registerSchoolAndGetSchoolId(String schoolName) {

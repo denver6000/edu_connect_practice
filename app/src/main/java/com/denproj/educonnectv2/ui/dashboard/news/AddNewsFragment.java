@@ -32,7 +32,7 @@ public class AddNewsFragment extends Fragment {
 
         launcher = registerForActivityResult(new ActivityResultContracts.GetContent(), result -> {
             if (result != null) {
-                Log.d("AddNewsFragment", result.getPath());
+//                Log.d("AddNewsFragment", result.get);
             }
         });
 
