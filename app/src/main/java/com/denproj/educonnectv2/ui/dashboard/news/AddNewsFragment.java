@@ -62,7 +62,7 @@ public class AddNewsFragment extends Fragment {
         launcher = registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), uri -> {
             if (uri != null) {
                 Toast.makeText(requireContext(), uri.toString(), Toast.LENGTH_SHORT).show();
-                binding.imageView2.setImageURI(uri);
+                binding.imageView3.setImageURI(uri);
                 Bitmap bitmap;
                 try (InputStream inputStream = getContext().getContentResolver().openInputStream(uri)) {
                     bitmap = BitmapFactory.decodeStream(inputStream);
