@@ -1,58 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:layout_marginTop="20dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:background="@drawable/corner_radius"
+    android:layout_height="wrap_content"
     android:elevation="20dp"
-    android:orientation="vertical"
-    android:padding="10dp" >
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/corner_radius"
+        android:layout_marginBottom="10dp"
+        >
 
-        <ImageView
-            android:id="@+id/newsPoster"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:orientation="horizontal"
+
+            android:layout_marginBottom="10dp"
+            >
+
+            <ImageView
+                android:id="@+id/newsPoster"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:layout_margin="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/newsTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="16dp"
+            android:textAlignment="center"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/open_sans_extrabold"
             android:text="TextView"
+            android:textAllCaps="true"
             android:textColor="#3F51B5"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:fontFamily="@font/open_sans"
             app:layout_constraintEnd_toStartOf="@+id/newsPoster"
             app:layout_constraintHorizontal_bias="0.086"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/newsDescription"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+
+            android:hint="News Description: "
+            android:layout_marginStart="10dp"
             android:fontFamily="@font/open_sans"
+            />
+        <TextView
+            android:id="@+id/newsDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans"
+            android:text="News Description Goes Heere"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/newsTitle"
             app:layout_constraintVertical_bias="0.206" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</LinearLayout>
+
+
+
+    </LinearLayout>
+</ScrollView>
