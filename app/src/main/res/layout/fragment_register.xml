@@ -5,9 +5,10 @@
     <data>
         <variable
             name="viewModel"
-            type="com.denproj.educonnectv2.viewModel.MainViewModel" />
+            type="com.denproj.educonnectv2.viewModel.RegisterViewModel" />
     </data>
-    <FrameLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.loginRegister.RegisterFragment"
@@ -17,7 +18,7 @@
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_margin="20dp"
             android:background="@drawable/corner_radius"
@@ -54,12 +55,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
+                    android:drawableStart="@drawable/baseline_account_box_24"
+                    android:drawablePadding="10dp"
                     android:fontFamily="@font/open_sans"
                     android:inputType="text"
                     android:maxLength="50"
                     android:maxLines="1"
-                    android:drawableStart="@drawable/baseline_account_box_24"
-                    android:drawablePadding="10dp"
 
                     android:text="@={viewModel.userForRegister.firstName}" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -82,12 +83,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
+                    android:drawableStart="@drawable/baseline_account_box_24"
+                    android:drawablePadding="10dp"
                     android:fontFamily="@font/open_sans"
                     android:inputType="text"
                     android:maxLength="50"
                     android:maxLines="1"
-                    android:drawableStart="@drawable/baseline_account_box_24"
-                    android:drawablePadding="10dp"
                     android:text="@={viewModel.userForRegister.lastName}" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,16 +110,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
+                    android:drawableStart="@drawable/baseline_account_box_24"
+                    android:drawablePadding="10dp"
                     android:fontFamily="@font/open_sans"
                     android:inputType="text"
                     android:maxLength="50"
                     android:maxLines="1"
-                    android:drawableStart="@drawable/baseline_account_box_24"
-                    android:drawablePadding="10dp"
                     android:text="@={viewModel.userForRegister.middleName}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/schoolField"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -136,27 +138,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
+                    android:drawableStart="@drawable/baseline_school_24"
+                    android:drawablePadding="10dp"
                     android:fontFamily="@font/open_sans"
                     android:inputType="text"
                     android:maxLength="50"
-                    android:drawableStart="@drawable/baseline_school_24"
-                    android:drawablePadding="10dp"
-                    android:maxLines="1"
-                    android:text="@={viewModel.schoolName}" />
+                    android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxStrokeColor="#7E7E7E"
-                app:hintAnimationEnabled="true"
-                app:hintTextColor="#7E7E7E"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:hint="Email"
+                app:boxStrokeColor="#7E7E7E"
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="#7E7E7E"
 
                 >
 
@@ -164,28 +165,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
+                    android:drawableStart="@drawable/baseline_email_24"
+                    android:drawablePadding="10dp"
                     android:fontFamily="@font/open_sans"
                     android:inputType="text"
                     android:maxLength="50"
                     android:maxLines="1"
-                    android:drawableStart="@drawable/baseline_email_24"
-                    android:drawablePadding="10dp"
                     android:text="@={viewModel.userForRegister.email}" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxStrokeColor="#7E7E7E"
-                app:hintAnimationEnabled="true"
-                app:hintTextColor="#7E7E7E"
-                app:passwordToggleEnabled="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:hint="Password"
+                app:boxStrokeColor="#7E7E7E"
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="#7E7E7E"
+                app:passwordToggleEnabled="true"
 
                 >
 
@@ -193,41 +194,41 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
+                    android:drawableStart="@drawable/baseline_lock_24"
+                    android:drawablePadding="10dp"
                     android:fontFamily="@font/open_sans"
                     android:inputType="textPassword"
                     android:maxLength="50"
                     android:maxLines="1"
-                    android:drawableStart="@drawable/baseline_lock_24"
-                    android:drawablePadding="10dp"
                     android:text="@={viewModel.userForRegister.password}" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxStrokeColor="#7E7E7E"
-                app:hintAnimationEnabled="true"
-                app:hintTextColor="#7E7E7E"
-                app:passwordToggleEnabled="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="20dp"
+                android:hint="Confirm Password"
+                app:boxStrokeColor="#7E7E7E"
+                app:hintAnimationEnabled="true"
+                app:hintTextColor="#7E7E7E"
 
-                android:hint="Confirm Password">
+                app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="3dp"
+                    android:drawableStart="@drawable/baseline_lock_24"
+                    android:drawablePadding="10dp"
                     android:fontFamily="@font/open_sans"
                     android:inputType="textPassword"
                     android:maxLength="50"
                     android:maxLines="1"
-                    android:drawableStart="@drawable/baseline_lock_24"
-                    android:drawablePadding="10dp"
                     android:text="@={viewModel.confirmPassword}" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -239,10 +240,10 @@
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/btn_design2"
                 android:fontFamily="@font/open_sans"
-                android:textStyle="bold"
                 android:text="Register"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
         </LinearLayout>
-    </FrameLayout>
+    </ScrollView>
 </layout>

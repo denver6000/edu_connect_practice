@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.Dashboard"
     android:fitsSystemWindows="true"
+    tools:showIn="start"
     >
     <!--  -->
 
@@ -28,7 +29,8 @@
                 app:titleTextColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:title="Dashboard" />
+                app:title="Dashboard"
+                />
         </com.google.android.material.appbar.AppBarLayout>
 
 
@@ -50,7 +52,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/sidebar_header_dashboard"
-        app:menu="@menu/dashboard_menu" />
+        tools:showIn="start"/>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

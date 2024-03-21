@@ -21,11 +21,14 @@ import androidx.navigation.ui.NavigationUI;
 import com.denproj.educonnectv2.R;
 import com.denproj.educonnectv2.databinding.ActivityDashboardBinding;
 import com.denproj.educonnectv2.databinding.SidebarHeaderDashboardBinding;
+import com.denproj.educonnectv2.room.entity.Roles;
 import com.denproj.educonnectv2.room.entity.User;
 import com.denproj.educonnectv2.util.UITask;
 import com.denproj.educonnectv2.viewModel.DashboardViewModel;
 import com.denproj.educonnectv2.viewModel.NewsViewModel;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.Objects;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -47,23 +50,29 @@ public class Dashboard extends AppCompatActivity {
         NavigationView navigationView = binding.dashboardNavigationView;
         DrawerLayout drawerLayout = binding.drawerLayout;
         viewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
+
         appBarConfiguration = new AppBarConfiguration.Builder(R.id.newsFragment, R.id.calendaryFragment, R.id.groupFragment, R.id.resourcesFragment).setOpenableLayout(drawerLayout).build();
-
-        NavController navController =  ((NavHostFragment)getSupportFragmentManager().findFragmentById(R.id.dashboardFragmentContainer)).getNavController();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
-
-         ;
-        int userId = getIntent().getIntExtra("userId", 0);
-
-        if (userId != 0) {
-            viewModel.getUser(userId, new UITask<User>() {
+        User user = getIntent().getParcelableExtra("user");
+        if (user != null) {
+            viewModel.loggedInUser.setValue(user);
+            viewModel.loadUserSchool(user);
+            viewModel.loadRoleName(user, new UITask<String>() {
                 @Override
-                public void onSuccess(User result) {
-                    SidebarHeaderDashboardBinding headerBinding = SidebarHeaderDashboardBinding.bind(binding.dashboardNavigationView.getHeaderView(0));
-                    String name = result.firstName + " " + result.lastName;
-                    headerBinding.name.setText(name);
-                    headerBinding.email.setText(result.email);
+                public void onSuccess(String result) {
+                    if (result.equals(Roles.role_1)) {
+
+                        navigationView.inflateMenu(R.menu.dashboard_admin_menu);
+                        appBarConfiguration = new AppBarConfiguration
+                                .Builder(R.id.newsFragment, R.id.registerFragmentTeacher, R.id.calendaryFragment, R.id.groupFragment, R.id.resourcesFragment)
+                                .setOpenableLayout(drawerLayout)
+                                .build();
+                    } else {
+                        navigationView.inflateMenu(R.menu.dashboard_menu);
+                        appBarConfiguration = new AppBarConfiguration
+                                .Builder(R.id.newsFragment, R.id.calendaryFragment, R.id.groupFragment, R.id.resourcesFragment)
+                                .setOpenableLayout(drawerLayout)
+                                .build();
+                    }
                 }
 
                 @Override
@@ -71,9 +80,14 @@ public class Dashboard extends AppCompatActivity {
 
                 }
             });
-        } else {
-            Toast.makeText(this, "No User", Toast.LENGTH_SHORT).show();
         }
+
+
+        NavController navController =  ((NavHostFragment)getSupportFragmentManager().findFragmentById(R.id.dashboardFragmentContainer)).getNavController();
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
+
+
 
 
 

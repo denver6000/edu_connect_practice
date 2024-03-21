@@ -44,11 +44,12 @@ public class LoginFragment extends Fragment {
             navController.navigate(R.id.action_loginFragment_to_registerFragment);
         });
 
-        viewModel.checkAndLoadSaveLogin(new UITask<SavedLogin>() {
+        viewModel.checkAndLoadSavedLogin(new UITask<User>() {
             @Override
-            public void onSuccess(SavedLogin result) {
+            public void onSuccess(User result) {
+
                 LoginFragmentDirections.ActionLoginFragmentToDashboard directions = LoginFragmentDirections.actionLoginFragmentToDashboard();
-                directions.setUserId(result.userId);
+                directions.setUser(result);
                 navController.navigate(directions);
             }
 
@@ -60,7 +61,8 @@ public class LoginFragment extends Fragment {
                     public void onSuccess(User result) {
                         Toast.makeText(requireContext(), "Welcome " + result.firstName, Toast.LENGTH_SHORT).show();
                         LoginFragmentDirections.ActionLoginFragmentToDashboard directions = LoginFragmentDirections.actionLoginFragmentToDashboard();
-                        directions.setUserId(result.userId);
+                        directions.setUser(result);
+
                         navController.navigate(directions);
                     }
 

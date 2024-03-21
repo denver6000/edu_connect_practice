@@ -38,4 +38,8 @@
             android:id="@+id/action_addNewsFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/registerFragmentTeacher"
+        android:name="com.denproj.educonnectv2.ui.loginRegister.RegisterFragment"
+        android:label="RegisterFragment" />
 </navigation>

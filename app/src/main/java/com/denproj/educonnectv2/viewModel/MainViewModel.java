@@ -26,11 +26,9 @@ public class MainViewModel extends ViewModel {
 
     public ObservableField<String> passwordForLogin = new ObservableField<>("");
 
-    public ObservableField<String> confirmPassword = new ObservableField<>("");
 
 
-    public ObservableField<String> schoolName = new ObservableField<>("");
-    public User userForRegister = new User();
+
 
     UserDao userDao;
 
@@ -73,55 +71,19 @@ public class MainViewModel extends ViewModel {
     }
 
 
-    public void register(UITask<Void> uiTask) {
 
-        if (userForRegister.firstName.isEmpty() ||
-                userForRegister.middleName.isEmpty() ||
-                userForRegister.lastName.isEmpty() ||
-                userForRegister.email.isEmpty() ||
-                userForRegister.password.isEmpty() ||
-                confirmPassword.get().isEmpty() ||
-                schoolName.get().isEmpty()) {
 
-            uiTask.onFail("Empty Field");
-        } else if (userForRegister.password.equals(confirmPassword.get())) {
-            AsyncRunner.runAsync(new QueryTask<Void>() {
-                @Override
-                public Void onTask() {
-                    userForRegister.roleId = userDao.getRoleIdFromRoleName(Roles.role_1);
-                    userForRegister.schoolId = registerSchoolAndGetSchoolId(schoolName.get());
-                    return userDao.registerUser(userForRegister);
-                }
+    public void checkAndLoadSavedLogin(UITask<User> uiTask) {
+        AsyncRunner.runAsync(new QueryTask<User>() {
 
-                @Override
-                public void onSuccess(Void result) {
-
-                }
-
-                @Override
-                public void onFail(String message) {
-                    uiTask.onFail(message);
-                }
-
-                @Override
-                public void onUI(Void result) {
-                    uiTask.onSuccess(result);
-                }
-            });
-        } else {
-            uiTask.onFail("Password Mismatch");
-        }
-    }
-
-    public void checkAndLoadSaveLogin(UITask<SavedLogin> uiTask) {
-        AsyncRunner.runAsync(new QueryTask<SavedLogin>() {
             @Override
-            public SavedLogin onTask() {
-                return userDao.getRecentlySavedLogin();
+            public User onTask() {
+                SavedLogin savedLogin = userDao.getRecentlySavedLogin();
+                return userDao.selectUserById(savedLogin.userId);
             }
 
             @Override
-            public void onSuccess(SavedLogin result) {
+            public void onSuccess(User result) {
 
             }
 
@@ -131,9 +93,9 @@ public class MainViewModel extends ViewModel {
             }
 
             @Override
-            public void onUI(SavedLogin result) {
+            public void onUI(User result) {
                 if (result == null) {
-                    uiTask.onFail("No Saved Login");
+                    uiTask.onFail("Uer not found");
                 } else {
                     uiTask.onSuccess(result);
                 }
@@ -141,11 +103,7 @@ public class MainViewModel extends ViewModel {
         });
     }
 
-    public int registerSchoolAndGetSchoolId(String schoolName) {
-        userDao.registerSchool(new Schools(schoolName));
 
-        return userDao.selectSchoolIdByName(schoolName);
-    }
 
     public void attemptToRegisterRoles(Context context) {
         SharedPrefUtil.runCodeOnce(context, userDao);
