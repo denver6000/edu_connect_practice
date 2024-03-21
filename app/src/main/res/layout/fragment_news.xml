@@ -18,14 +18,14 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             app:srcCompat="@drawable/baseline_add_card_24"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
+            android:backgroundTint="#2196F3"
             android:focusable="true"
             android:contentDescription="Post News"
-            android:background="@color/black"
             android:layout_gravity="bottom|end"
             android:layout_margin="20dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-
             android:elevation="10dp"/>
 
         <TextView
