@@ -50,7 +50,7 @@ public class RegisterFragment extends Fragment implements UITask<Void>{
         if (Objects.equals(dashboardViewModel.roleName.getValue(), Roles.role_1)) {
             viewModel.schoolName.set(dashboardViewModel.schoolName.getValue());
             binding.schoolField.getEditText().setEnabled(false);
-            binding.registerAction.setOnClickListener(view -> viewModel.registerWithRole(Roles.role_2, dashboardViewModel.schoolName.getValue(), new UITask<Void>() {
+            binding.registerAction.setOnClickListener(view -> viewModel.registerWithRole(Roles.role_2, new UITask<Void>() {
                 @Override
                 public void onSuccess(Void result) {
                     Toast.makeText(requireContext(), "Added Teacher", Toast.LENGTH_SHORT).show();

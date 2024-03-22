@@ -48,7 +48,7 @@ public class RegisterViewModel extends ViewModel {
         return userDao.selectSchoolIdByName(schoolName);
     }
 
-    public void registerWithRole(String roleName, String existingSchoolName, UITask<Void> uiTask) {
+    public void registerWithRole(String roleName, UITask<Void> uiTask) {
 
         if (userForRegister.firstName.isEmpty() ||
                 userForRegister.middleName.isEmpty() ||
@@ -63,7 +63,7 @@ public class RegisterViewModel extends ViewModel {
                 @Override
                 public Void onTask() {
                     userForRegister.roleId = userDao.getRoleIdFromRoleName(roleName);
-                    userForRegister.schoolId = registerSchoolAndGetSchoolId(existingSchoolName);
+                    userForRegister.schoolId = registerSchoolAndGetSchoolId(schoolName.get());
                     return userDao.registerUser(userForRegister);
                 }
 
