@@ -52,7 +52,8 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/sidebar_header_dashboard"
-        tools:showIn="start"/>
+        tools:showIn="start"
+        />
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

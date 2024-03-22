@@ -81,5 +81,29 @@ public class DashboardViewModel extends ViewModel {
         });
     }
 
+    public void logOut(UITask<Void> uiTask){
+        AsyncRunner.runAsync(new QueryTask<Void>() {
+            @Override
+            public Void onTask() {
+                return userDao.clearSavedLogin();
+            }
+
+            @Override
+            public void onSuccess(Void result) {
+
+            }
+
+            @Override
+            public void onFail(String message) {
+                uiTask.onFail(message);
+            }
+
+            @Override
+            public void onUI(Void result) {
+                uiTask.onSuccess(result);
+            }
+        });
+    }
+
 
 }
