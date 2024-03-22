@@ -48,7 +48,7 @@ public class RegisterFragment extends Fragment implements UITask<Void>{
 
         binding.setViewModel(viewModel);
         if (Objects.equals(dashboardViewModel.roleName.getValue(), Roles.role_1)) {
-            binding.schoolField.getEditText().setText(dashboardViewModel.schoolName.getValue());
+            viewModel.schoolName.set(dashboardViewModel.schoolName.getValue());
             binding.schoolField.getEditText().setEnabled(false);
             binding.registerAction.setOnClickListener(view -> viewModel.registerWithRole(Roles.role_2, dashboardViewModel.schoolName.getValue(), new UITask<Void>() {
                 @Override
