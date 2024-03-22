@@ -22,9 +22,35 @@
             android:id="@+id/resourcesFragment"
             android:icon="@drawable/baseline_storage_24"
             android:title="Manage Resources" />
-        <item
-            android:id="@+id/registerFragmentTeacher"
-            android:title="Register a Teacher"
-            />
+
     </group>
+
+    <item android:title="Admin Settings">
+        <menu>
+            <item
+                android:id="@+id/registerFragmentTeacher"
+                android:title="Register a Teacher"
+                android:icon="@drawable/baseline_person_add_alt_1_24"
+                />
+
+        </menu>
+
+    </item>
+
+    <item
+        android:title="Account Settings"
+
+        >
+        <menu>
+            <group>
+
+                <item
+                    android:title="Logout"
+                    android:icon="@drawable/baseline_logout_24"
+                    />
+            </group>
+        </menu>
+    </item>
+
+
 </menu>
