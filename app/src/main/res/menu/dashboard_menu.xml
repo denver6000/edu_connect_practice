@@ -23,22 +23,7 @@
             android:icon="@drawable/baseline_storage_24"
             android:title="Manage Resources" />
     </group>
-
-
-
-        <item
-            android:title="Account Settings"
-
-            >
-            <menu>
-                <group>
-
-                    <item
-                        android:title="Logout"
-                        android:icon="@drawable/baseline_logout_24"
-                        />
-                </group>
-            </menu>
-        </item>
-
+    <item
+        android:id="@+id/logout"
+        android:title="Log Out" />
 </menu>

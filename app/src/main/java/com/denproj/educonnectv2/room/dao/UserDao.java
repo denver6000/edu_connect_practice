@@ -16,6 +16,9 @@ import java.util.List;
 @Dao
 public interface UserDao {
 
+    @Query("DELETE FROM SavedLogin")
+    Void clearSavedLogin();
+
     @Insert
     Void registerUser(User user);
 

@@ -1,9 +1,13 @@
 package com.denproj.educonnectv2.ui.dashboard;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -59,6 +63,13 @@ public class Dashboard extends AppCompatActivity {
             viewModel.loadRoleName(user, new UITask<String>() {
                 @Override
                 public void onSuccess(String result) {
+
+
+                    SidebarHeaderDashboardBinding headerDashboardBinding = SidebarHeaderDashboardBinding.bind(navigationView.getHeaderView(0));
+                    headerDashboardBinding.email.setText(user.email);
+                    String name = user.firstName + " " + user.lastName;
+                    headerDashboardBinding.name.setText(name);
+
                     if (result.equals(Roles.role_1)) {
 
                         navigationView.inflateMenu(R.menu.dashboard_admin_menu);
@@ -73,6 +84,8 @@ public class Dashboard extends AppCompatActivity {
                                 .setOpenableLayout(drawerLayout)
                                 .build();
                     }
+
+
                 }
 
                 @Override
@@ -84,13 +97,19 @@ public class Dashboard extends AppCompatActivity {
 
 
         NavController navController =  ((NavHostFragment)getSupportFragmentManager().findFragmentById(R.id.dashboardFragmentContainer)).getNavController();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);NavigationUI.setupWithNavController(navigationView, navController);
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
 
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.bottom_nav_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
