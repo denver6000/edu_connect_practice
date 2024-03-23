@@ -3,6 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+
+    <item android:title="Account"
+
+        >
+        <menu>
+            <group>
+
+                <item
+                    android:id="@+id/profileFragment"
+                    android:icon="@drawable/baseline_person_2_24"
+                    android:title="Profile" />
+            </group>
+        </menu>
+    </item>
+
+
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/newsFragment"
@@ -23,7 +39,4 @@
             android:icon="@drawable/baseline_storage_24"
             android:title="Manage Resources" />
     </group>
-    <item
-        android:id="@+id/logout"
-        android:title="Log Out" />
 </menu>

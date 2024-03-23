@@ -2,7 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
+
+    <item android:title="Account"
+
+        >
+        <menu>
+            <group>
+
+                <item
+                    android:id="@+id/profileFragment"
+                    android:icon="@drawable/baseline_person_2_24"
+                    android:title="Profile" />
+            </group>
+        </menu>
+    </item>
+
     <group android:checkableBehavior="single">
+
+
         <item
             android:id="@+id/newsFragment"
             android:icon="@drawable/baseline_newspaper_24"
@@ -32,20 +49,6 @@
 
         </menu>
 
-    </item>
-
-    <item android:title="Account Settings"
-
-        >
-        <menu>
-            <group>
-
-                <item
-                    android:id="@+id/profileFragment"
-                    android:icon="@drawable/baseline_person_2_24"
-                    android:title="Profile" />
-            </group>
-        </menu>
     </item>
 
 
