@@ -51,6 +51,7 @@ public class RegisterFragment extends Fragment implements UITask<Void>{
         binding.setViewModel(viewModel);
         dashboardViewModel.loggedInUser.observe(getViewLifecycleOwner(), user -> {
             if (user == null) {
+                binding.registerAction.setOnClickListener(view -> viewModel.register(this));
                 return;
             }
             if (Objects.equals(dashboardViewModel.roleName.getValue(), Roles.role_1)) {
@@ -80,8 +81,6 @@ public class RegisterFragment extends Fragment implements UITask<Void>{
                         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
                     }
                 }));
-            } else {
-                binding.registerAction.setOnClickListener(view -> viewModel.register(this));
             }
         });
 
