@@ -1,94 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/corner_radius"
     android:elevation="20dp"
-    android:layout_marginBottom="10dp"
-    android:layout_marginTop="10dp"
-    android:orientation="vertical">
-
-
+    android:orientation="vertical"
+    app:layoutDescription="@xml/news_card_scene2">
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:background="@drawable/corner_radius"
-        android:layout_marginBottom="10dp"
-        >
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/newsPoster"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="10dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/openNewsText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans"
+        android:textStyle="bold"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="Open News"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="@id/linearLayout3"
+        app:layout_constraintStart_toStartOf="@id/linearLayout3"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout3" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
+            android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintVertical_bias="0.362">
 
-            android:layout_marginBottom="10dp"
-            >
 
-            <ImageView
-                android:id="@+id/newsPoster"
+            <TextView
+                android:id="@+id/newsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/open_sans_extrabold"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#3F51B5"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/newsPoster"
+                app:layout_constraintHorizontal_bias="0.086"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/open_sans"
+                android:hint="News Description: " />
+
+            <TextView
+                android:id="@+id/newsDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/open_sans"
+                android:text="News Description Goes Heere"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/newsTitle"
+                app:layout_constraintVertical_bias="0.206" />
 
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/newsTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp"
-            android:textAlignment="center"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/open_sans_extrabold"
-            android:text="TextView"
-            android:textAllCaps="true"
-            android:textColor="#3F51B5"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/newsPoster"
-            app:layout_constraintHorizontal_bias="0.086"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-
-            android:hint="News Description: "
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/open_sans"
-            />
-        <TextView
-            android:id="@+id/newsDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/open_sans"
-            android:text="News Description Goes Heere"
-            android:layout_marginBottom="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/newsTitle"
-            app:layout_constraintVertical_bias="0.206" />
+    </ScrollView>
 
 
-
-    </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.motion.widget.MotionLayout>
