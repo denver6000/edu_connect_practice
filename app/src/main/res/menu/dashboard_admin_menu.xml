@@ -2,8 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <group android:checkableBehavior="single"
-        >
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/newsFragment"
             android:icon="@drawable/baseline_newspaper_24"
@@ -22,32 +21,29 @@
             android:id="@+id/resourcesFragment"
             android:icon="@drawable/baseline_storage_24"
             android:title="Manage Resources" />
-
     </group>
 
     <item android:title="Admin Settings">
         <menu>
             <item
                 android:id="@+id/registerFragmentTeacher"
-                android:title="Register a Teacher"
                 android:icon="@drawable/baseline_person_add_alt_1_24"
-                />
+                android:title="Register a Teacher" />
 
         </menu>
 
     </item>
 
-    <item
-        android:title="Account Settings"
+    <item android:title="Account Settings"
 
         >
         <menu>
             <group>
 
                 <item
-                    android:title="Logout"
-                    android:icon="@drawable/baseline_logout_24"
-                    />
+                    android:id="@+id/profileFragment"
+                    android:icon="@drawable/baseline_person_2_24"
+                    android:title="Profile" />
             </group>
         </menu>
     </item>

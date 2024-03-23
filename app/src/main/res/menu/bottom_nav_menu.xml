@@ -2,32 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item
-        android:icon="@drawable/baseline_home_24"
-        android:title="Home"
-        android:id="@+id/home"/>
 
 
-    <item
-        android:icon="@drawable/baseline_newspaper_24"
-        android:title="News"
-        android:id="@+id/news"/>
-
-    <item
-        android:icon="@drawable/baseline_event_note_24"
-        android:title="Events"
-        android:id="@+id/events"
-        />
-
-    <item
-        android:icon="@drawable/baseline_groups_24"
-        android:title="Groups"
-        android:id="@+id/groups"
-        />
-
-    <item android:id="@+id/profile"
-        android:title="Profile"
-        android:icon="@drawable/baseline_account_circle_24"/>
 
 
 </menu>

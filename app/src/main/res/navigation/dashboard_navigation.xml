@@ -42,4 +42,9 @@
         android:id="@+id/registerFragmentTeacher"
         android:name="com.denproj.educonnectv2.ui.loginRegister.RegisterFragment"
         android:label="RegisterFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.denproj.educonnectv2.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

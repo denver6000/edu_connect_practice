@@ -3,18 +3,28 @@ package com.denproj.educonnectv2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.denproj.educonnectv2.databinding.ActivityMainBinding;
 import com.denproj.educonnectv2.databinding.ActivitySplashScreenBinding;
+import com.denproj.educonnectv2.room.entity.User;
+import com.denproj.educonnectv2.ui.dashboard.Dashboard;
+import com.denproj.educonnectv2.util.UITask;
+import com.denproj.educonnectv2.viewModel.SplashScreenViewModel;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class SplashScreen extends AppCompatActivity {
 
     ActivitySplashScreenBinding binding;
@@ -22,6 +32,11 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SplashScreenViewModel viewModel = new ViewModelProvider(this).get(SplashScreenViewModel.class);
+
+
+
         binding = ActivitySplashScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -37,29 +52,30 @@ public class SplashScreen extends AppCompatActivity {
         binding.topViews.startAnimation(down_anim);
         binding.bottomViews.startAnimation(up_anim);
 
-
-  /*      binding.logo.startAnimation(in_anim);
-
-        new Handler().postDelayed(new Runnable() {
+        viewModel.checkAndLoadSavedLogin(new UITask<User>() {
             @Override
-            public void run() {
-
-                binding.logo.startAnimation(out_anim);
+            public void onSuccess(User result) {
 
 
+                new Handler().postDelayed(() -> {
+
+                    Intent intent = new Intent(SplashScreen.this, Dashboard.class);
+                    intent.putExtra("user", result);
+                    startActivity(intent);
+                    finish();
+
+                },2000);
             }
-        },1800);
-*/
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
 
+            @Override
+            public void onFail(String message) {
+                Log.d("user", message);
                 Intent intent = new Intent(SplashScreen.this, MainActivity.class);
                 startActivity(intent);
                 finish();
-
             }
-        },2000);
+        });
+
 
 
 

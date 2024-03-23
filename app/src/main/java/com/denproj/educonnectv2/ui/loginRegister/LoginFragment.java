@@ -44,37 +44,23 @@ public class LoginFragment extends Fragment {
             navController.navigate(R.id.action_loginFragment_to_registerFragment);
         });
 
-        viewModel.checkAndLoadSavedLogin(new UITask<User>() {
+        binding.loginAction.setOnClickListener(view -> viewModel.login(new UITask<User>() {
             @Override
             public void onSuccess(User result) {
-
+                Toast.makeText(requireContext(), "Welcome " + result.firstName, Toast.LENGTH_SHORT).show();
                 LoginFragmentDirections.ActionLoginFragmentToDashboard directions = LoginFragmentDirections.actionLoginFragmentToDashboard();
                 directions.setUser(result);
+
                 navController.navigate(directions);
             }
 
+
+
             @Override
             public void onFail(String message) {
-                binding.linearLayout.startAnimation(in_anim);
-                binding.loginAction.setOnClickListener(view -> viewModel.login(new UITask<User>() {
-                    @Override
-                    public void onSuccess(User result) {
-                        Toast.makeText(requireContext(), "Welcome " + result.firstName, Toast.LENGTH_SHORT).show();
-                        LoginFragmentDirections.ActionLoginFragmentToDashboard directions = LoginFragmentDirections.actionLoginFragmentToDashboard();
-                        directions.setUser(result);
-
-                        navController.navigate(directions);
-                    }
-
-
-
-                    @Override
-                    public void onFail(String message) {
-                        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
-                    }
-                }));
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
             }
-        });
+        }));
         return binding.getRoot();
     }
 }

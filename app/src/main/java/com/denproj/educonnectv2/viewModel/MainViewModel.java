@@ -73,35 +73,6 @@ public class MainViewModel extends ViewModel {
 
 
 
-    public void checkAndLoadSavedLogin(UITask<User> uiTask) {
-        AsyncRunner.runAsync(new QueryTask<User>() {
-
-            @Override
-            public User onTask() {
-                SavedLogin savedLogin = userDao.getRecentlySavedLogin();
-                return userDao.selectUserById(savedLogin.userId);
-            }
-
-            @Override
-            public void onSuccess(User result) {
-
-            }
-
-            @Override
-            public void onFail(String message) {
-                uiTask.onFail(message);
-            }
-
-            @Override
-            public void onUI(User result) {
-                if (result == null) {
-                    uiTask.onFail("Uer not found");
-                } else {
-                    uiTask.onSuccess(result);
-                }
-            }
-        });
-    }
 
 
 

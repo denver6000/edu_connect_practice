@@ -2,6 +2,7 @@ package com.denproj.educonnectv2.ui.dashboard;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -64,7 +65,6 @@ public class Dashboard extends AppCompatActivity {
                 @Override
                 public void onSuccess(String result) {
 
-
                     SidebarHeaderDashboardBinding headerDashboardBinding = SidebarHeaderDashboardBinding.bind(navigationView.getHeaderView(0));
                     headerDashboardBinding.email.setText(user.email);
                     String name = user.firstName + " " + user.lastName;
@@ -74,7 +74,7 @@ public class Dashboard extends AppCompatActivity {
 
                         navigationView.inflateMenu(R.menu.dashboard_admin_menu);
                         appBarConfiguration = new AppBarConfiguration
-                                .Builder(R.id.newsFragment, R.id.registerFragmentTeacher, R.id.calendaryFragment, R.id.groupFragment, R.id.resourcesFragment)
+                                .Builder(R.id.newsFragment, R.id.registerFragmentTeacher, R.id.calendaryFragment, R.id.groupFragment, R.id.resourcesFragment, R.id.profileFragment)
                                 .setOpenableLayout(drawerLayout)
                                 .build();
                     } else {
@@ -96,20 +96,26 @@ public class Dashboard extends AppCompatActivity {
         }
 
 
-        NavController navController =  ((NavHostFragment)getSupportFragmentManager().findFragmentById(R.id.dashboardFragmentContainer)).getNavController();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);NavigationUI.setupWithNavController(navigationView, navController);
-        NavigationUI.setupWithNavController(navigationView, navController);
 
+
+
+
+        NavController navController =  ((NavHostFragment)getSupportFragmentManager().findFragmentById(R.id.dashboardFragmentContainer)).getNavController();
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
 
 
 
 
     }
 
+
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.bottom_nav_menu, menu);
-        return super.onCreateOptionsMenu(menu);
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.logout) {
+            Toast.makeText(this, "Hi", Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
