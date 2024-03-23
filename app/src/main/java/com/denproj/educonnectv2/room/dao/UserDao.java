@@ -31,6 +31,10 @@ public interface UserDao {
     @Insert
     Void registerSchool(Schools schools);
 
+
+    @Query("SELECT * FROM Schools WHERE schoolName = :schoolName LIMIT 1")
+    Schools doesSchoolExist(String schoolName);
+
     @Query("SELECT schoolId FROM Schools WHERE schoolName=:schoolName")
     int selectSchoolIdByName(String schoolName);
 

@@ -3,6 +3,7 @@ package com.denproj.educonnectv2.ui.loginRegister;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.denproj.educonnectv2.R;
 import com.denproj.educonnectv2.databinding.FragmentRegisterBinding;
 import com.denproj.educonnectv2.room.entity.Roles;
+import com.denproj.educonnectv2.room.entity.User;
 import com.denproj.educonnectv2.util.UITask;
 import com.denproj.educonnectv2.viewModel.DashboardViewModel;
 import com.denproj.educonnectv2.viewModel.MainViewModel;
@@ -30,7 +32,7 @@ public class RegisterFragment extends Fragment implements UITask<Void>{
     private RegisterViewModel viewModel;
     private NavController navController;
     FragmentRegisterBinding binding;
-
+    DashboardViewModel dashboardViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,7 +40,7 @@ public class RegisterFragment extends Fragment implements UITask<Void>{
         binding = FragmentRegisterBinding.inflate(inflater);
 
         viewModel = new ViewModelProvider(requireActivity()).get(RegisterViewModel.class);
-        DashboardViewModel dashboardViewModel = new ViewModelProvider(requireActivity()).get(DashboardViewModel.class);
+        dashboardViewModel = new ViewModelProvider(requireActivity()).get(DashboardViewModel.class);
 
         try {
             navController = Navigation.findNavController(requireActivity(), R.id.fragmentContainerView2);
@@ -47,24 +49,41 @@ public class RegisterFragment extends Fragment implements UITask<Void>{
         }
 
         binding.setViewModel(viewModel);
-        if (Objects.equals(dashboardViewModel.roleName.getValue(), Roles.role_1)) {
-            viewModel.schoolName.set(dashboardViewModel.schoolName.getValue());
-            binding.schoolField.getEditText().setEnabled(false);
-            binding.registerAction.setOnClickListener(view -> viewModel.registerWithRole(Roles.role_2, new UITask<Void>() {
-                @Override
-                public void onSuccess(Void result) {
-                    Toast.makeText(requireContext(), "Added Teacher", Toast.LENGTH_SHORT).show();
-                }
+        dashboardViewModel.loggedInUser.observe(getViewLifecycleOwner(), user -> {
+            if (user == null) {
+                return;
+            }
+            if (Objects.equals(dashboardViewModel.roleName.getValue(), Roles.role_1)) {
+                freezeSchoolField();
+                binding.registerAction.setOnClickListener(view -> viewModel.registerWithRole(Roles.role_2, user.schoolId, new UITask<Void>() {
+                    @Override
+                    public void onSuccess(Void result) {
+                        Toast.makeText(requireContext(), "Added Teacher", Toast.LENGTH_SHORT).show();
+                    }
 
-                @Override
-                public void onFail(String message) {
+                    @Override
+                    public void onFail(String message) {
 
-                    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
-                }
-            }));
-        } else {
-            binding.registerAction.setOnClickListener(view -> viewModel.register(this));
-        }
+                        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+                    }
+                }));
+            } else if (Objects.equals(dashboardViewModel.roleName.getValue(), Roles.role_2)) {
+                freezeSchoolField();
+                binding.registerAction.setOnClickListener(view -> viewModel.registerWithRole(Roles.role_3, user.schoolId, new UITask<Void>() {
+                    @Override
+                    public void onSuccess(Void result) {
+                        Toast.makeText(requireContext(), "Added Student", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFail(String message) {
+                        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+                    }
+                }));
+            } else {
+                binding.registerAction.setOnClickListener(view -> viewModel.register(this));
+            }
+        });
 
         return binding.getRoot();
     }
@@ -78,5 +97,10 @@ public class RegisterFragment extends Fragment implements UITask<Void>{
     @Override
     public void onFail(String message) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    void freezeSchoolField() {
+        viewModel.schoolName.set(dashboardViewModel.schoolName.getValue());
+        binding.schoolField.getEditText().setEnabled(false);
     }
 }

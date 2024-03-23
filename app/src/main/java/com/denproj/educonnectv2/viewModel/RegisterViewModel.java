@@ -1,5 +1,8 @@
 package com.denproj.educonnectv2.viewModel;
 
+import android.database.sqlite.SQLiteConstraintException;
+import android.util.Log;
+
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -38,17 +41,14 @@ public class RegisterViewModel extends ViewModel {
 
 
     public ObservableField<String> confirmPassword = new ObservableField<>("");
-
-
     public ObservableField<String> schoolName = new ObservableField<>("");
 
     public int registerSchoolAndGetSchoolId(String schoolName) {
         userDao.registerSchool(new Schools(schoolName));
-
         return userDao.selectSchoolIdByName(schoolName);
     }
 
-    public void registerWithRole(String roleName, UITask<Void> uiTask) {
+    public void registerWithRole(String roleName, int schoolId, UITask<Void> uiTask) {
 
         if (userForRegister.firstName.isEmpty() ||
                 userForRegister.middleName.isEmpty() ||
@@ -63,7 +63,7 @@ public class RegisterViewModel extends ViewModel {
                 @Override
                 public Void onTask() {
                     userForRegister.roleId = userDao.getRoleIdFromRoleName(roleName);
-                    userForRegister.schoolId = registerSchoolAndGetSchoolId(schoolName.get());
+                    userForRegister.schoolId = schoolId;
                     return userDao.registerUser(userForRegister);
                 }
 

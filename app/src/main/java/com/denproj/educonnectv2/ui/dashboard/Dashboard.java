@@ -59,6 +59,7 @@ public class Dashboard extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(R.id.newsFragment, R.id.calendaryFragment, R.id.groupFragment, R.id.resourcesFragment).setOpenableLayout(drawerLayout).build();
         User user = getIntent().getParcelableExtra("user");
         if (user != null) {
+            Toast.makeText(this, "User is Logged in", Toast.LENGTH_SHORT).show();
             viewModel.loggedInUser.setValue(user);
             viewModel.loadUserSchool(user);
             viewModel.loadRoleName(user, new UITask<String>() {
@@ -73,6 +74,12 @@ public class Dashboard extends AppCompatActivity {
                     if (result.equals(Roles.role_1)) {
 
                         navigationView.inflateMenu(R.menu.dashboard_admin_menu);
+                        appBarConfiguration = new AppBarConfiguration
+                                .Builder(R.id.newsFragment, R.id.registerFragmentTeacher, R.id.calendaryFragment, R.id.groupFragment, R.id.resourcesFragment, R.id.profileFragment)
+                                .setOpenableLayout(drawerLayout)
+                                .build();
+                    } else if (result.equals(Roles.role_2)) {
+                        navigationView.inflateMenu(R.menu.dashboard_teacher_menu);
                         appBarConfiguration = new AppBarConfiguration
                                 .Builder(R.id.newsFragment, R.id.registerFragmentTeacher, R.id.calendaryFragment, R.id.groupFragment, R.id.resourcesFragment, R.id.profileFragment)
                                 .setOpenableLayout(drawerLayout)

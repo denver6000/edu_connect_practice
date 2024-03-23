@@ -1,4 +1,4 @@
-package com.denproj.educonnectv2.ui.profile;
+package com.denproj.educonnectv2.ui.dashboard.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
