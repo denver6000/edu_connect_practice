@@ -67,12 +67,16 @@ public class SplashScreen extends AppCompatActivity {
                 },2000);
             }
 
+
             @Override
             public void onFail(String message) {
-                Log.d("user", message);
-                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+
+                new Handler().postDelayed(() -> {
+                    Log.d("user", message);
+                    Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                },2000);
             }
         });
 
