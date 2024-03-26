@@ -6,10 +6,8 @@ import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
 
 import com.denproj.educonnectv2.room.dao.UserDao;
-import com.denproj.educonnectv2.room.entity.Roles;
 import com.denproj.educonnectv2.room.entity.SavedLogin;
-import com.denproj.educonnectv2.room.entity.Schools;
-import com.denproj.educonnectv2.room.entity.SharedPrefUtil;
+import com.denproj.educonnectv2.util.SharedPrefUtil;
 import com.denproj.educonnectv2.room.entity.User;
 import com.denproj.educonnectv2.util.AsyncRunner;
 import com.denproj.educonnectv2.util.QueryTask;

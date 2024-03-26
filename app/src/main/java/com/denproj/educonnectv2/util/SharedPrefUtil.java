@@ -1,9 +1,10 @@
-package com.denproj.educonnectv2.room.entity;
+package com.denproj.educonnectv2.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.denproj.educonnectv2.room.dao.UserDao;
+import com.denproj.educonnectv2.room.entity.Roles;
 import com.denproj.educonnectv2.util.AsyncRunner;
 import com.denproj.educonnectv2.util.QueryTask;
 

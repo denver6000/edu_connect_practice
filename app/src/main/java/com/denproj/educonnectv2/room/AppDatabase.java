@@ -8,9 +8,13 @@ import com.denproj.educonnectv2.room.entity.News;
 import com.denproj.educonnectv2.room.entity.Roles;
 import com.denproj.educonnectv2.room.entity.SavedLogin;
 import com.denproj.educonnectv2.room.entity.Schools;
+import com.denproj.educonnectv2.room.entity.Sections;
+import com.denproj.educonnectv2.room.entity.StudentWithSection;
 import com.denproj.educonnectv2.room.entity.User;
 
-@Database(exportSchema = false, entities = {Roles.class, User.class, Schools.class, News.class, SavedLogin.class}, version = 9)
+@Database(
+        exportSchema = false,
+        entities = {Roles.class, User.class, Schools.class, News.class, SavedLogin.class, Sections.class, StudentWithSection.class}, version = 12)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao getUserDao();
 

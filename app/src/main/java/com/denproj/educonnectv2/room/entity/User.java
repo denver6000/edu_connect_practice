@@ -9,7 +9,8 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(foreignKeys = @ForeignKey(entity = Schools.class, parentColumns = "schoolId", childColumns = "schoolId"))
+@Entity(foreignKeys = {
+        @ForeignKey(entity = Schools.class, parentColumns = "schoolId", childColumns = "schoolId")})
 public class User implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)

@@ -9,6 +9,8 @@ import com.denproj.educonnectv2.room.entity.News;
 import com.denproj.educonnectv2.room.entity.Roles;
 import com.denproj.educonnectv2.room.entity.SavedLogin;
 import com.denproj.educonnectv2.room.entity.Schools;
+import com.denproj.educonnectv2.room.entity.Sections;
+import com.denproj.educonnectv2.room.entity.StudentWithSection;
 import com.denproj.educonnectv2.room.entity.User;
 
 import java.util.List;
@@ -30,6 +32,9 @@ public interface UserDao {
 
     @Insert
     Void registerSchool(Schools schools);
+
+    @Query("SELECT * FROM Sections")
+    List<Sections> getAllSection();
 
 
     @Query("SELECT * FROM Schools WHERE schoolName = :schoolName LIMIT 1")
@@ -63,6 +68,22 @@ public interface UserDao {
 
     @Query("SElECT * FROM Savedlogin LIMIT 1")
     SavedLogin getRecentlySavedLogin();
+
+
+    @Insert
+    Void registerSection(Sections sections);
+
+    @Query("SELECT sectionId FROM Sections WHERE sectionName=:name LIMIT 1")
+    int getSectionIdWithName(String name);
+
+    @Query("SELECT EXISTS (SELECT * FROM Sections WHERE sectionName=:name)")
+    boolean checkIfSectionExistByName(String name);
+
+    @Insert
+    Void bindStudentWithSection(StudentWithSection studentWithSection);
+
+    @Query("SELECT userId FROM User ORDER BY userId DESC LIMIT 1")
+    int getMostRecentlyInsertedRow ();
 
 
 }

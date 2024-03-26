@@ -2,6 +2,7 @@ package com.denproj.educonnectv2.util;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -23,6 +24,7 @@ public class AsyncRunner {
                     handler.post(() -> queryTask.onUI(result));
 
                 } catch (Exception e) {
+                    Log.e("AsyncRunner", e.getMessage(), e);
                     handler.post(() -> queryTask.onFail(e.getLocalizedMessage()));
                 }
             }

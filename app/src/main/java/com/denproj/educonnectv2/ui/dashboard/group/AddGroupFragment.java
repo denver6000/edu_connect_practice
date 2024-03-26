@@ -20,6 +20,9 @@ public class AddGroupFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FragmentAddNewsBinding binding = FragmentAddNewsBinding.inflate(inflater);
+
+        
+
         return binding.getRoot();
     }
 }
