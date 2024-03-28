@@ -91,8 +91,6 @@ public class Dashboard extends AppCompatActivity {
                                 .setOpenableLayout(drawerLayout)
                                 .build();
                     }
-
-
                 }
 
                 @Override

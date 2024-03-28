@@ -5,11 +5,14 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.denproj.educonnectv2.room.entity.Group;
 import com.denproj.educonnectv2.room.entity.News;
 import com.denproj.educonnectv2.room.entity.Roles;
 import com.denproj.educonnectv2.room.entity.SavedLogin;
 import com.denproj.educonnectv2.room.entity.Schools;
 import com.denproj.educonnectv2.room.entity.Sections;
+import com.denproj.educonnectv2.room.entity.Student;
+import com.denproj.educonnectv2.room.entity.StudentAndGroup;
 import com.denproj.educonnectv2.room.entity.StudentWithSection;
 import com.denproj.educonnectv2.room.entity.User;
 
@@ -85,5 +88,19 @@ public interface UserDao {
     @Query("SELECT userId FROM User ORDER BY userId DESC LIMIT 1")
     int getMostRecentlyInsertedRow ();
 
+    @Query("SELECT * FROM Student")
+    List<Student> getStudentWithSection();
+
+    @Insert
+    void addGroup(Group group);
+
+    @Query("SELECT groupId FROM `Group` WHERE groupName=:groupName LIMIT 1")
+    int getGroupIdByName(String groupName);
+
+    @Insert
+    Void insertStudentGroup(StudentAndGroup studentAndGroup);
+
+    @Query("SELECT * FROM `Group`")
+    List<Group> getAllGroup();
 
 }

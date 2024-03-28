@@ -16,6 +16,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        defaultConfig {
+            javaCompileOptions {
+                annotationProcessorOptions {
+                    arguments["room.schemaLocation"] = "$projectDir/schemas"
+                }
+            }
+        }
     }
 
     buildTypes {
@@ -35,6 +42,13 @@ android {
     buildFeatures {
         dataBinding = true
         viewBinding = true
+    }
+    sourceSets {
+        getByName("main") {
+            assets {
+                srcDirs("src\\main\\assets", "src\\main\\assets")
+            }
+        }
     }
 }
 

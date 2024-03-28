@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         down_anim = AnimationUtils.loadAnimation(this, R.anim.down_animation);
 
 
-        viewModel.attemptToRegisterRoles(this);
+//        viewModel.attemptToRegisterRoles(this);
 
         if (checkSelfPermission(Manifest.permission.MANAGE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.MANAGE_EXTERNAL_STORAGE)) {
             new AlertDialog.Builder(this)

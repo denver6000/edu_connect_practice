@@ -1,0 +1,6 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+INSERT INTO Roles VALUES(1,'admin');
+INSERT INTO Roles VALUES(2,'teacher');
+INSERT INTO Roles VALUES(3,'student');
+COMMIT;

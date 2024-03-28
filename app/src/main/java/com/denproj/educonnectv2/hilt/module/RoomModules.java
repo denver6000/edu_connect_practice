@@ -19,7 +19,7 @@ public class RoomModules {
 
     @Provides
     AppDatabase provideAppDatabase(@ApplicationContext Context context) {
-        return Room.databaseBuilder(context, AppDatabase.class, "AppDatabase").fallbackToDestructiveMigration().build();
+        return Room.databaseBuilder(context, AppDatabase.class, "AppDatabase").fallbackToDestructiveMigration().createFromAsset("database/AppDatabase-Roles.sql").build();
     }
 
 

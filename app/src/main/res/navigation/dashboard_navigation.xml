@@ -14,7 +14,11 @@
         android:id="@+id/groupFragment"
         android:name="com.denproj.educonnectv2.ui.dashboard.group.GroupFragment"
         android:label="Groups"
-        tools:layout="@layout/fragment_group" />
+        tools:layout="@layout/fragment_group" >
+        <action
+            android:id="@+id/action_groupFragment_to_addGroupFragment"
+            app:destination="@id/addGroupFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.denproj.educonnectv2.ui.dashboard.news.NewsFragment"
@@ -47,4 +51,13 @@
         android:name="com.denproj.educonnectv2.ui.dashboard.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/addGroupFragment"
+        android:name="com.denproj.educonnectv2.ui.dashboard.group.AddGroupFragment"
+        android:label="fragment_add_group"
+        tools:layout="@layout/fragment_add_group" >
+        <action
+            android:id="@+id/action_addGroupFragment_to_groupFragment"
+            app:destination="@id/groupFragment" />
+    </fragment>
 </navigation>

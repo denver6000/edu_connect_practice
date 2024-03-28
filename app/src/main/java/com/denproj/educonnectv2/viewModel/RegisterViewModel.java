@@ -226,12 +226,5 @@ public class RegisterViewModel extends ViewModel {
         });
     }
 
-    int attemptRegisterSectionAndGetId(String name) {
-        if (!userDao.checkIfSectionExistByName(name)) {
-            userDao.registerSection(new Sections(name));
-        }
-        return userDao.getSectionIdWithName(name);
-    }
-
 
 }

@@ -24,10 +24,6 @@ public class MainViewModel extends ViewModel {
 
     public ObservableField<String> passwordForLogin = new ObservableField<>("");
 
-
-
-
-
     UserDao userDao;
 
     @Inject
@@ -67,16 +63,5 @@ public class MainViewModel extends ViewModel {
             });
         }
     }
-
-
-
-
-
-
-
-    public void attemptToRegisterRoles(Context context) {
-        SharedPrefUtil.runCodeOnce(context, userDao);
-    }
-
 
 }
