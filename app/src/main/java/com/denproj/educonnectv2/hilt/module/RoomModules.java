@@ -1,6 +1,7 @@
 package com.denproj.educonnectv2.hilt.module;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.room.Room;
 
@@ -19,6 +20,7 @@ public class RoomModules {
 
     @Provides
     AppDatabase provideAppDatabase(@ApplicationContext Context context) {
+        Log.d("Module", "Created");
         return Room.databaseBuilder(context, AppDatabase.class, "AppDatabase").fallbackToDestructiveMigration().createFromAsset("database/AppDatabase-Roles.sql").build();
     }
 

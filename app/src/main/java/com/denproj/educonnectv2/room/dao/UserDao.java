@@ -103,4 +103,7 @@ public interface UserDao {
     @Query("SELECT * FROM `Group`")
     List<Group> getAllGroup();
 
+    @Query("SELECT EXISTS (SELECT * FROM Roles LIMIT 3)")
+    boolean checkIfRolesExist();
+
 }

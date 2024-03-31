@@ -7,6 +7,7 @@ import com.denproj.educonnectv2.room.entity.SavedLogin;
 import com.denproj.educonnectv2.room.entity.User;
 import com.denproj.educonnectv2.util.AsyncRunner;
 import com.denproj.educonnectv2.util.QueryTask;
+import com.denproj.educonnectv2.util.SharedPrefUtil;
 import com.denproj.educonnectv2.util.UITask;
 
 import javax.inject.Inject;
@@ -57,6 +58,10 @@ public class SplashScreenViewModel extends ViewModel {
                 }
             }
         });
+    }
+
+    public void attemptToRegisterRoles() {
+        SharedPrefUtil.runCodeOnce(userDao);
     }
 
 }

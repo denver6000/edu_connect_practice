@@ -19,6 +19,7 @@ import com.denproj.educonnectv2.databinding.ActivityMainBinding;
 import com.denproj.educonnectv2.databinding.ActivitySplashScreenBinding;
 import com.denproj.educonnectv2.room.entity.User;
 import com.denproj.educonnectv2.ui.dashboard.Dashboard;
+import com.denproj.educonnectv2.util.SharedPrefUtil;
 import com.denproj.educonnectv2.util.UITask;
 import com.denproj.educonnectv2.viewModel.SplashScreenViewModel;
 
@@ -86,9 +87,7 @@ public class SplashScreen extends AppCompatActivity {
 
 
 
-
-
-
+        viewModel.attemptToRegisterRoles();
 
 
 
