@@ -1,10 +1,13 @@
 package com.denproj.educonnectv2.room.dao;
 
 
+import android.media.metrics.Event;
+
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.denproj.educonnectv2.room.entity.Events;
 import com.denproj.educonnectv2.room.entity.Group;
 import com.denproj.educonnectv2.room.entity.News;
 import com.denproj.educonnectv2.room.entity.Roles;
@@ -105,5 +108,11 @@ public interface UserDao {
 
     @Query("SELECT EXISTS (SELECT * FROM Roles LIMIT 3)")
     boolean checkIfRolesExist();
+
+    @Insert
+    Void insertEvent(Events events);
+
+    @Query("SELECT * FROM Events")
+    List<Events> getAllEvents();
 
 }

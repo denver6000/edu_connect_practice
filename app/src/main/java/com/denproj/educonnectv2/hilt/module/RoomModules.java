@@ -19,9 +19,9 @@ import dagger.hilt.components.SingletonComponent;
 public class RoomModules {
 
     @Provides
-    AppDatabase provideAppDatabase(@ApplicationContext Context context) {
+    static AppDatabase provideAppDatabase(@ApplicationContext Context context) {
         Log.d("Module", "Created");
-        return Room.databaseBuilder(context, AppDatabase.class, "AppDatabase").fallbackToDestructiveMigration().createFromAsset("database/AppDatabase-Roles.sql").build();
+        return Room.databaseBuilder(context, AppDatabase.class, "AppDatabase").fallbackToDestructiveMigration().build();
     }
 
 

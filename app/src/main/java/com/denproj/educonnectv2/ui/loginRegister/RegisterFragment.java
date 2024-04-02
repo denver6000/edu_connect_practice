@@ -56,6 +56,7 @@ public class RegisterFragment extends Fragment implements UITask<Void>, AdapterV
             if (user == null) {
                 setVisibilityOfSectionField(View.GONE);
                 binding.registerAction.setOnClickListener(view -> viewModel.register(this));
+                Toast.makeText(requireContext(), "You are registering as an admin.", Toast.LENGTH_SHORT).show();
                 return;
             }
             if (Objects.equals(dashboardViewModel.roleName.getValue(), Roles.role_1)) {
