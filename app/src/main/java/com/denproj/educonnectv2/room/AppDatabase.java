@@ -5,6 +5,7 @@ import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
 import com.denproj.educonnectv2.room.dao.UserDao;
+import com.denproj.educonnectv2.room.entity.Events;
 import com.denproj.educonnectv2.room.entity.Group;
 import com.denproj.educonnectv2.room.entity.News;
 import com.denproj.educonnectv2.room.entity.Roles;
@@ -17,10 +18,20 @@ import com.denproj.educonnectv2.room.entity.StudentWithSection;
 import com.denproj.educonnectv2.room.entity.User;
 
 @Database(
-        entities = {Roles.class, User.class, Schools.class, News.class, SavedLogin.class, Sections.class, StudentWithSection.class, Group.class, StudentAndGroup.class},
+        entities = {
+                Roles.class,
+                User.class,
+                Schools.class,
+                News.class,
+                SavedLogin.class,
+                Sections.class,
+                StudentWithSection.class,
+                Group.class,
+                StudentAndGroup.class,
+                Events.class},
         views = {Student.class},
 
-        version = 14)
+        version = 17)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao getUserDao();
 

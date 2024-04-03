@@ -156,6 +156,7 @@ public class RegisterViewModel extends ViewModel {
                 @Override
                 public Void onTask() {
                     userForRegister.roleId = userDao.getRoleIdFromRoleName(Roles.role_1);
+                    Log.d("RegisterViewModel", userForRegister.roleId + " is your role id.");
                     userForRegister.schoolId = registerSchoolAndGetSchoolId(schoolName.get());
                     return userDao.registerUser(userForRegister);
                 }

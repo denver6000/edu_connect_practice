@@ -9,7 +9,11 @@
         android:id="@+id/calendaryFragment"
         android:name="com.denproj.educonnectv2.ui.dashboard.calendar.CalendaryFragment"
         android:label="Calendar"
-        tools:layout="@layout/fragment_calendary" />
+        tools:layout="@layout/fragment_calendary" >
+        <action
+            android:id="@+id/action_calendaryFragment_to_addEventFragment"
+            app:destination="@id/addEventFragment" />
+    </fragment>
     <fragment
         android:id="@+id/groupFragment"
         android:name="com.denproj.educonnectv2.ui.dashboard.group.GroupFragment"
@@ -59,5 +63,14 @@
         <action
             android:id="@+id/action_addGroupFragment_to_groupFragment"
             app:destination="@id/groupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEventFragment"
+        android:name="com.denproj.educonnectv2.ui.dashboard.calendar.AddEventFragment"
+        android:label="fragment_add_event"
+        tools:layout="@layout/fragment_add_event" >
+        <action
+            android:id="@+id/action_addEventFragment_to_calendaryFragment"
+            app:destination="@id/calendaryFragment" />
     </fragment>
 </navigation>
