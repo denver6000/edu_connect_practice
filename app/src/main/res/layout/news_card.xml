@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:background="@drawable/corner_radius"
-    android:elevation="20dp"
+    android:background="@drawable/card_design"
     android:orientation="vertical"
     app:layoutDescription="@xml/news_card_scene2">
 
@@ -36,15 +35,17 @@
         android:id="@+id/openNewsText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/open_sans_extrabold"
+        android:fontFamily="@font/roboto_bold"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
+        android:textColor="@color/white"
         android:text="Read News"
-        android:textAlignment="center"
-        android:textSize="17sp"
+        android:textSize="20sp"
+        android:gravity="center_vertical"
         app:layout_constraintEnd_toEndOf="@id/linearLayout3"
         app:layout_constraintStart_toStartOf="@id/linearLayout3"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout3" />
+        app:layout_constraintTop_toBottomOf="@id/linearLayout3"
+        app:drawableEndCompat="@drawable/baseline_arrow_circle_down_24" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -84,7 +85,7 @@
                 android:text="TextView"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textColor="#3F51B5"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/newsPoster"
@@ -110,7 +111,7 @@
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/open_sans"
                 android:text="News Description Goes Heere"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.05"

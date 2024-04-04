@@ -12,7 +12,7 @@
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:background="@drawable/bg_gradient"
+        android:background="@color/color2"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,8 +29,8 @@
             android:textStyle="bold"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:fontFamily="@font/bungee"
-            android:textSize="20sp"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="30sp"
             android:id="@+id/text"
             />
 
@@ -49,11 +49,10 @@
             android:layout_height="wrap_content"
             android:text="Idol Double Pump"
             android:textColor="@color/white"
-            android:fontFamily="@font/open_sans"
+            android:fontFamily="@font/roboto"
             android:layout_below="@+id/profilePic"
             android:layout_centerHorizontal="true"
             android:textSize="25sp"
-            android:textStyle="bold"
             android:id="@+id/nameText"
             />
         <TextView
@@ -74,6 +73,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,14 +82,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:padding="10dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:background="@drawable/corner_radius"
+                android:background="@drawable/card_design2"
                 android:layout_marginTop="20dp"
                 android:elevation="20dp"
                 android:orientation="vertical"
@@ -100,7 +99,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:background="@drawable/corner_radius"
+                android:background="@drawable/card_design2"
                 android:layout_marginTop="20dp"
                 android:elevation="20dp"
                 android:orientation="vertical"
@@ -110,7 +109,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:background="@drawable/corner_radius"
+                android:background="@drawable/card_design2"
                 android:layout_marginTop="20dp"
                 android:elevation="20dp"
                 android:orientation="vertical"
@@ -121,7 +120,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:background="@drawable/corner_radius"
+                android:background="@drawable/card_design2"
                 android:layout_marginTop="20dp"
                 android:elevation="20dp"
                 android:orientation="vertical"
@@ -141,6 +140,8 @@
         android:layout_margin="20dp"
         android:clickable="true"
         android:elevation="20dp"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:backgroundTint="#E91E63"
         android:focusable="true"
         android:src="@drawable/baseline_logout_24"
         app:layout_constraintBottom_toBottomOf="parent"

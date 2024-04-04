@@ -23,13 +23,14 @@
 
             >
 
+
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="20dp"
-                android:background="@drawable/corner_radius"
+                android:background="@drawable/card_design2"
                 android:elevation="10dp"
                 android:orientation="vertical">
 
@@ -40,7 +41,7 @@
 
                     >
 
-                    <ImageView
+                    <!--  <ImageView
                         android:id="@+id/logo"
                         android:layout_width="130dp"
                         android:layout_height="100dp"
@@ -49,14 +50,16 @@
                         android:layout_marginTop="30dp"
                         android:layout_marginBottom="30dp"
                         android:src="@drawable/edu_try_logo" />
-
+-->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/nunito_sans"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="30dp"
+                        android:fontFamily="@font/roboto_condensed_bold"
                         android:text="Login"
-                        android:textColor="#3F51B5"
+                        android:textColor="@color/color1"
                         android:textSize="40sp" />
 
 
@@ -65,27 +68,27 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxStrokeColor="#7E7E7E"
-                    app:hintAnimationEnabled="true"
-                    app:hintTextColor="#7E7E7E"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:hint="Username"
+                    app:boxStrokeColor="#7E7E7E"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="#7E7E7E"
 
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/open_sans"
+                        android:drawableStart="@drawable/baseline_account_box_24"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/roboto"
                         android:inputType="text"
                         android:maxLength="50"
                         android:maxLines="1"
-                        android:drawableStart="@drawable/baseline_account_box_24"
-                        android:drawablePadding="10dp"
                         android:text="@={viewModel.emailForLogin}"
 
                         />
@@ -93,30 +96,29 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxStrokeColor="#7E7E7E"
-                    app:hintAnimationEnabled="true"
-                    app:hintTextColor="#7E7E7E"
-                    app:passwordToggleEnabled="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:hint="Password"
+                    app:boxStrokeColor="#7E7E7E"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="#7E7E7E"
+                    app:passwordToggleEnabled="true"
 
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/open_sans"
+                        android:drawableStart="@drawable/baseline_lock_24"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/roboto"
                         android:inputType="textPassword"
                         android:maxLength="50"
                         android:maxLines="1"
-                        android:drawableStart="@drawable/baseline_lock_24"
-                        android:drawablePadding="10dp"
-                        android:text="@={viewModel.passwordForLogin}"
-                        />
+                        android:text="@={viewModel.passwordForLogin}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -126,7 +128,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="30dp"
-                    android:background="@drawable/button_design"
+                    android:background="@drawable/btn_design3"
                     android:elevation="20dp"
                     android:fontFamily="@font/open_sans"
                     android:text="Login"
@@ -139,9 +141,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/open_sans"
+                    android:fontFamily="@font/roboto"
                     android:text="Don't have an account?"
-                    android:textColor="#2196F3" />
+                    android:textColor="@color/color1" />
 
                 <TextView
                     android:id="@+id/registerBtn"
@@ -149,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="40dp"
-                    android:fontFamily="@font/open_sans"
+                    android:fontFamily="@font/roboto"
                     android:text="Click here to Register"
                     android:textColor="#4CAF50"
                     android:textStyle="bold" />
@@ -180,15 +182,15 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxStrokeColor="#7E7E7E"
-                    app:hintAnimationEnabled="true"
-                    app:hintTextColor="#7E7E7E"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:hint="First Name"
+                    app:boxStrokeColor="#7E7E7E"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="#7E7E7E"
 
                     >
 
@@ -206,15 +208,15 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxStrokeColor="#7E7E7E"
-                    app:hintAnimationEnabled="true"
-                    app:hintTextColor="#7E7E7E"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:hint="Last Name"
+                    app:boxStrokeColor="#7E7E7E"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="#7E7E7E"
 
                     >
 
@@ -232,15 +234,15 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxStrokeColor="#7E7E7E"
-                    app:hintAnimationEnabled="true"
-                    app:hintTextColor="#7E7E7E"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:hint="Middle Name"
+                    app:boxStrokeColor="#7E7E7E"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="#7E7E7E"
 
                     >
 
@@ -258,15 +260,15 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxStrokeColor="#7E7E7E"
-                    app:hintAnimationEnabled="true"
-                    app:hintTextColor="#7E7E7E"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:hint="Username"
+                    app:boxStrokeColor="#7E7E7E"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="#7E7E7E"
 
                     >
 
@@ -284,16 +286,16 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxStrokeColor="#7E7E7E"
-                    app:hintAnimationEnabled="true"
-                    app:hintTextColor="#7E7E7E"
-                    app:passwordToggleEnabled="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:hint="Password"
+                    app:boxStrokeColor="#7E7E7E"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="#7E7E7E"
+                    app:passwordToggleEnabled="true"
 
                     >
 
@@ -311,17 +313,17 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxStrokeColor="#7E7E7E"
-                    app:hintAnimationEnabled="true"
-                    app:hintTextColor="#7E7E7E"
-                    app:passwordToggleEnabled="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="20dp"
-                    android:hint="Confirm Password">
+                    android:hint="Confirm Password"
+                    app:boxStrokeColor="#7E7E7E"
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="#7E7E7E"
+                    app:passwordToggleEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
