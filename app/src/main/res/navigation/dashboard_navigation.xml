@@ -36,7 +36,11 @@
         android:id="@+id/resourcesFragment"
         android:name="com.denproj.educonnectv2.ui.dashboard.resources.ResourcesFragment"
         android:label="fragment_resources"
-        tools:layout="@layout/fragment_resources" />
+        tools:layout="@layout/fragment_resources" >
+        <action
+            android:id="@+id/action_resourcesFragment_to_addResourceFragment"
+            app:destination="@id/addResourceFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addNewsFragment"
         android:name="com.denproj.educonnectv2.ui.dashboard.news.AddNewsFragment"
@@ -72,5 +76,14 @@
         <action
             android:id="@+id/action_addEventFragment_to_calendaryFragment"
             app:destination="@id/calendaryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addResourceFragment"
+        android:name="com.denproj.educonnectv2.ui.dashboard.resources.AddResourceFragment"
+        android:label="fragment_add_resource"
+        tools:layout="@layout/fragment_add_resource" >
+        <action
+            android:id="@+id/action_addResourceFragment_to_resourcesFragment"
+            app:destination="@id/resourcesFragment" />
     </fragment>
 </navigation>

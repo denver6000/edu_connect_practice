@@ -74,6 +74,7 @@ public class EventsRCVAdapter extends RecyclerView.Adapter<EventsRCVAdapter.View
                         selected.remove(event);
                     }
                 }
+
                 return null;
             }
 

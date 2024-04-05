@@ -8,6 +8,8 @@ import com.denproj.educonnectv2.room.dao.UserDao;
 import com.denproj.educonnectv2.room.entity.Events;
 import com.denproj.educonnectv2.room.entity.Group;
 import com.denproj.educonnectv2.room.entity.News;
+import com.denproj.educonnectv2.room.entity.Resource;
+import com.denproj.educonnectv2.room.entity.ResourceFile;
 import com.denproj.educonnectv2.room.entity.Roles;
 import com.denproj.educonnectv2.room.entity.SavedLogin;
 import com.denproj.educonnectv2.room.entity.Schools;
@@ -28,10 +30,12 @@ import com.denproj.educonnectv2.room.entity.User;
                 StudentWithSection.class,
                 Group.class,
                 StudentAndGroup.class,
-                Events.class},
+                Events.class,
+                Resource.class,
+                ResourceFile.class},
         views = {Student.class},
 
-        version = 17)
+        version = 23)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao getUserDao();
 

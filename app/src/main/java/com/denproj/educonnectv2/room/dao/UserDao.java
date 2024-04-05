@@ -10,6 +10,8 @@ import androidx.room.Query;
 import com.denproj.educonnectv2.room.entity.Events;
 import com.denproj.educonnectv2.room.entity.Group;
 import com.denproj.educonnectv2.room.entity.News;
+import com.denproj.educonnectv2.room.entity.Resource;
+import com.denproj.educonnectv2.room.entity.ResourceFile;
 import com.denproj.educonnectv2.room.entity.Roles;
 import com.denproj.educonnectv2.room.entity.SavedLogin;
 import com.denproj.educonnectv2.room.entity.Schools;
@@ -114,5 +116,17 @@ public interface UserDao {
 
     @Query("SELECT * FROM Events")
     List<Events> getAllEvents();
+
+    @Insert
+    long insertResource(Resource resource);
+
+    @Insert
+    Void insertResourceFile(ResourceFile resourceFile);
+
+    @Query("SELECT * FROM Resource")
+    List<Resource> getAllResource();
+
+    @Query("SELECT filePath FROM ResourceFile WHERE resourceId = :resourceId")
+    List<String> getAllFilesFromAResourceId(int resourceId);
 
 }
