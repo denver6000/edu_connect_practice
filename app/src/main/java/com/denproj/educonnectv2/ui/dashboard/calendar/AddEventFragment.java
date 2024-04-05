@@ -39,7 +39,7 @@ import java.util.Locale;
 public class AddEventFragment extends Fragment {
 
 
-    private static final String[] MONTHS = {
+    public static final String[] MONTHS = {
             "January", "February", "March", "April", "May", "June", "July",
             "August", "September", "October", "November", "December"
     };

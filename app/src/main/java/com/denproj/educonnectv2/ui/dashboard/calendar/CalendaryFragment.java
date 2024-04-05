@@ -10,6 +10,7 @@ import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -24,12 +25,15 @@ import android.widget.Toast;
 import com.denproj.educonnectv2.R;
 import com.denproj.educonnectv2.databinding.FragmentCalendaryBinding;
 import com.denproj.educonnectv2.room.entity.Events;
+import com.denproj.educonnectv2.room.entity.Roles;
 import com.denproj.educonnectv2.util.UITask;
 import com.denproj.educonnectv2.viewModel.CalendarViewModel;
+import com.denproj.educonnectv2.viewModel.DashboardViewModel;
 
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 
 public class CalendaryFragment extends Fragment {
@@ -41,6 +45,9 @@ public class CalendaryFragment extends Fragment {
                              Bundle savedInstanceState) {
         FragmentCalendaryBinding binding = FragmentCalendaryBinding.inflate(inflater);
         CalendarViewModel viewModel = new ViewModelProvider(requireActivity()).get(CalendarViewModel.class);
+        DashboardViewModel dashboardViewModel = new ViewModelProvider(requireActivity()).get(DashboardViewModel.class);
+
+
         binding.eventRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         viewModel.getAllEvents(new UITask<List<Events>>() {
             @Override
@@ -55,9 +62,23 @@ public class CalendaryFragment extends Fragment {
 
             }
         });
+
         NavController navController = Navigation.findNavController(requireActivity(), R.id.dashboardFragmentContainer);
         binding.addEventCardRedirect.setOnClickListener(view -> {
             navController.navigate(R.id.action_calendaryFragment_to_addEventFragment);
+        });
+
+
+        dashboardViewModel.roleName.observe(getViewLifecycleOwner(), s -> {
+            if (Objects.equals(s, Roles.role_3)) {
+                binding.addEventCardRedirect.setOnClickListener(null);
+                binding.addEventCardRedirect.setVisibility(View.GONE);
+            } else {
+                binding.addEventCardRedirect.setOnClickListener(view -> {
+                    navController.navigate(R.id.action_calendaryFragment_to_addEventFragment);
+                });
+                binding.addEventCardRedirect.setVisibility(View.VISIBLE);
+            }
         });
 
         binding.filterDate.setOnClickListener(view -> {

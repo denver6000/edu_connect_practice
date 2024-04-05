@@ -20,6 +20,7 @@ import com.denproj.educonnectv2.R;
 import com.denproj.educonnectv2.databinding.AddNewsDialogBinding;
 import com.denproj.educonnectv2.databinding.FragmentNewsBinding;
 import com.denproj.educonnectv2.room.entity.News;
+import com.denproj.educonnectv2.room.entity.Roles;
 import com.denproj.educonnectv2.room.entity.User;
 import com.denproj.educonnectv2.util.UITask;
 import com.denproj.educonnectv2.viewModel.DashboardViewModel;
@@ -39,8 +40,15 @@ public class NewsFragment extends Fragment {
         NewsViewModel viewModel = new ViewModelProvider(requireActivity()).get(NewsViewModel.class);
         DashboardViewModel dashboardViewModel = new ViewModelProvider(requireActivity()).get(DashboardViewModel.class);
         NavController navController = Navigation.findNavController(requireActivity(), R.id.dashboardFragmentContainer);
-        binding.addNewsRedirect.setOnClickListener(view -> {
-            navController.navigate(R.id.action_newsFragment_to_addNewsFragment);
+        dashboardViewModel.roleName.observe(getViewLifecycleOwner(), s -> {
+            if (s.equals(Roles.role_3)) {
+                binding.addNewsRedirect.setOnClickListener(null);
+                binding.addNewsRedirect.setVisibility(View.GONE);
+            } else {
+                binding.addNewsRedirect.setOnClickListener(view -> {
+                    navController.navigate(R.id.action_newsFragment_to_addNewsFragment);
+                });
+            }
         });
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         dashboardViewModel.loggedInUser.observe(getViewLifecycleOwner(), user -> {
